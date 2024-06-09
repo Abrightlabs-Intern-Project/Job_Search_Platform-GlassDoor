@@ -1,0 +1,100 @@
+/* Basic styling for the navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px;
+    background-color: #f8f8f8;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    border-bottom: 1px solid rgb(233, 229, 229);
+}
+
+/* Styling for the left part of the navbar */
+.navbar-left {
+    flex: 0;
+    margin-left: 10px;
+}
+
+.navbar-left-icon {
+    height: 80px;
+    width: 140px;
+    transition: height 0.3s, width 0.3s;
+}
+
+/* .navbar-left-icon:hover {
+    height: 111px;
+    width: auto;
+} */
+
+/* Styling for the center part of the navbar */
+.navbar-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+
+.nav-links li {
+    cursor: pointer;
+    position: relative;
+}
+
+.hover-content {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 500px;
+    height: 50px;
+    background-color: #ddd;
+    border: 1px solid #000;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* Styling for the right part of the navbar */
+.navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signin-button {
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: medium;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.signin-button:hover {
+    background-color: green;
+}
+
+.signin-icon {
+    height: 20px;
+    width: 18px;
+    margin-right: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .navbar-center {
+        display: none;
+    }
+}
