@@ -18,5 +18,10 @@ export class UsersResolver {
         return this.userservice.getAllUsers();
     }
 
+    // @Query(() => String)
+    // updatedb(){
+    //     return this.userservice.updatedb();
+    // }
+
 
 }

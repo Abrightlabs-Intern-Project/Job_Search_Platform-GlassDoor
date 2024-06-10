@@ -8,9 +8,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
+//for local
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+// for hosting
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = process.env.DATABASE_URL
 }
 
 
@@ -20,4 +27,49 @@ model User {
   password  String
   username  String
 }
+
+
+model Job {
+  id                    Int    @id @default(autoincrement())
+  ext_id                String
+  company_id            Int
+  company_name          String
+  company_logo          String?
+  company_website_url   String?
+  company_linkedin_url  String?
+  company_twitter_handle String?
+  company_github_url    String?
+  job_title             String
+  location              String
+  type_id               Int
+  type_name             String
+  city_geonameid        Int?
+  city_asciiname        String?
+  city_name             String?
+  city_country_code     String?
+  city_country_name     String?
+  city_country_region_id Int?
+  city_country_region_name String?
+  city_timezone         String?
+  city_latitude         String?
+  city_longitude        String?
+  country_code          String?
+  country_name          String?
+  country_region_id     Int?
+  country_region_name   String?
+  region_id             Int?
+  region_name           String?
+  has_remote            Boolean?
+  published             DateTime
+  description           String
+  experience_level      String?
+  application_url       String
+  language              String
+  clearance_required    Boolean
+  salary_min            Float?
+  salary_max            Float?
+  salary_currency       String?
+}
+
+
 
