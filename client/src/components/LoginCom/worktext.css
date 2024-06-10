@@ -1,49 +1,78 @@
-/* AuthComponent.css */
+/* Container styles */
 .auth-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .auth-image,
-  .auth-image-combined {
-    flex: 1;
-    padding: 10px;
-  }
-  
-  .auth-buttons {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .auth-buttons button,
-  .auth-buttons input {
-    margin: 10px 0;
-    padding: 10px;
-    width: 80%;
-    max-width: 300px;
-  }
-  
-  .auth-image-combined {
-    display: none;
-  }
-  
-  @media (max-width: 768px) {
-    .auth-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .auth-image {
-      display: none;
-    }
-  
-    .auth-image-combined {
-      display: block;
-    }
-  }
-  
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  color: black;
+}
+
+/* Initial text styles */
+.initial-text {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.initial-text a {
+  color:  green;
+  text-decoration: none;
+}
+
+.initial-text a:hover {
+  text-decoration: underline;
+}
+
+/* Button styles */
+.auth-button {
+  width: 80%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  /* border: none; */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.google-button {
+  /* background-color: #db4437;
+  color: white; */
+  border: 1px solid black;
+}
+
+.facebook-button {
+  /* background-color: #3b5998;
+  color: white; */
+  border: 1px solid black;
+}
+
+.email-button {
+  /* background-color: #555;
+  color: white; */
+  border: 1px solid black;
+}
+
+.auth-button i {
+  margin-right: 10px;
+  border-radius: 50%;
+  color: #333;
+  padding: 5px;
+}
+
+/* Input styles */
+.auth-input {
+  width: 76%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+  align-items: center;
+}

@@ -1,25 +1,22 @@
 import './worktext.css';
-import image1 from './images/comp1Image.png';
-import image2 from './images/comp2Image.png';
-import combined from './images/combinedImage.png';
+
 const AuthComponent = () => {
   return (
     <div className="auth-container">
-      <div className="auth-image auth-image-1">
-        <img src={image1} alt="Image 1" />
-      </div>
-      <div className="auth-buttons">
-        <button className="google-btn">Sign in with Google</button>
-        <button className="facebook-btn">Sign in with Facebook</button>
-        <input type="email" placeholder="Email" className="email-input" />
-        <button className="continue-btn">Continue with Email</button>
-      </div>
-      <div className="auth-image auth-image-2">
-        <img src={image2} alt="Image 2" />
-      </div>
-      <div className="auth-image-combined">
-        <img src={combined} alt="Combined Image" />
-      </div>
+      <p className="initial-text">
+        Create an account or sign in. By continuing, you agree to <br />our <a href="/terms">Terms of Use</a> and acknowledge our <a href="/privacy">Privacy Policy</a>.
+      </p>
+      <button className="auth-button google-button">
+        <i className="fab fa-google"></i> Continue with Google
+      </button>
+      <button className="auth-button facebook-button">
+        <i className="fab fa-facebook-f"></i> Continue with Facebook
+      </button>
+      <center>or</center>
+      <input type="text" placeholder="Email" className="auth-input" />
+      <button className="auth-button email-button">
+        <i className="fas fa-envelope"></i> Continue with Email
+      </button>
     </div>
   );
 }

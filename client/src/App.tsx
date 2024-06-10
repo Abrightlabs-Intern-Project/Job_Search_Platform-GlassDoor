@@ -1,6 +1,9 @@
 
 import './App.css'
-import AuthComponent from './components/LoginCom/Worktext'
+import GlassdoorFeatureComponent from './components/LoginCom/FeatureComp'
+import NewFeatureComponent from './components/LoginCom/NewFeatureComponent'
+import ResponsiveComponent from './components/LoginCom/Responsivecomp'
+import SearchInspirationComponent from './components/LoginCom/Startsearch'
 import NavBar from './components/navBarBeforeLog/NavBar'
 
 function App() {
@@ -8,7 +11,10 @@ function App() {
   return (
     <>
       <NavBar />
-      <AuthComponent />
+      <ResponsiveComponent />
+      <NewFeatureComponent />
+      <GlassdoorFeatureComponent />
+      <SearchInspirationComponent />
     </>
   )
 }
