@@ -23,7 +23,7 @@ const NavBar: React.FC = () => {
             </div>
             <div className="navbar-center">
                 <ul className="nav-links">
-                    {['Community', 'Services', 'Jobs', 'Companies'].map(item => (
+                    {['Community', 'Services', 'Jobs', 'Companies' ,'For Employers'].map(item => (
                         <li 
                             key={item} 
                             onMouseEnter={() => handleMouseEnter(item)} 
