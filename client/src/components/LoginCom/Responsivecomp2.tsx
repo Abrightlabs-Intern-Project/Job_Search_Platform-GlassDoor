@@ -6,10 +6,10 @@ import './worktext.css';
 import facebook from './images/facebook.png'
 
 import SignInwithGoogle from '../Signin/SigninwithGoogle';
-import SignInwithMail from '../Signin/SigninWithMail';
+// import SignInwithMail from '../Signin/SigninWithMail';
+import SignInwithMail2 from '../Signin/SignInWithMail2';
 
-const ResponsiveComponent = ({handleClick}:any) => {
-
+const ResponsiveComponent2 = () => {
   
   return (
     <>
@@ -34,9 +34,9 @@ const ResponsiveComponent = ({handleClick}:any) => {
       </button>
       <center>or</center>
       
-      <input type="text" placeholder="Email" className="auth-input" />
+      <input type="text" placeholder="Enter Your Password" className="auth-input" />
       
-      <SignInwithMail props={handleClick} />
+      <SignInwithMail2 />
     </div>
 
       </div>
@@ -48,4 +48,4 @@ const ResponsiveComponent = ({handleClick}:any) => {
   );
 }
 
-export default ResponsiveComponent;
+export default ResponsiveComponent2;
