@@ -1,20 +1,13 @@
 
 import './App.css'
-import GlassdoorFeatureComponent from './components/LoginCom/FeatureComp'
-import NewFeatureComponent from './components/LoginCom/NewFeatureComponent'
-import ResponsiveComponent from './components/LoginCom/Responsivecomp'
-import SearchInspirationComponent from './components/LoginCom/Startsearch'
-import NavBar from './components/navBarBeforeLog/NavBar'
+import BeforeLog from './BeforeLogin'
+
 
 function App() {
 
   return (
     <>
-      <NavBar />
-      <ResponsiveComponent />
-      <NewFeatureComponent />
-      <GlassdoorFeatureComponent />
-      <SearchInspirationComponent />
+      <BeforeLog />
     </>
   )
 }

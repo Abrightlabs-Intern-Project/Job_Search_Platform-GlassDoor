@@ -8,7 +8,7 @@
     /* background-color: #f0f0f0; */
   }
   
-  .container img{
+  .comb{
     display: none;
   }
   /* Box styles */
@@ -53,6 +53,9 @@
     
 }
 
+.facebook{
+  height:100px;
+}
 /* .box2{
 
     flex:0;
