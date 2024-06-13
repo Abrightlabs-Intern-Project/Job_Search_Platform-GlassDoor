@@ -1,0 +1,19 @@
+.classcontainer{
+  background-color: green;
+  /* width: 100%; */
+  height: 700px;
+  /* align-items: ; */
+}
+
+.smallcontainer{
+
+  background-color: red;
+  width:30%;
+  align-items: baseline;
+
+}
+
+.largecontainer{
+  background-color: blue;
+  width: 65%;
+}

@@ -1,0 +1,40 @@
+// src/components/NavBar.tsx
+import React from 'react';
+import { FaSearch, FaBell, FaUserCircle } from 'react-icons/fa';
+import './css/NavigationBar.css';
+import Logo from './images/glassdoor.png'
+
+const NavigationBar: React.FC = () => {
+    function ComunityNav(){
+        window.location.href = "/community";
+    }
+    function JobsNav(){
+        window.location.href = "/jobs";
+    }
+    function ComapanyNav(){
+        window.location.href = "/comapany";
+    }
+    function SalarisNav(){
+        window.location.href = "/salaries";
+    }
+    return (
+        <nav className="navbar">
+            <div className="navbar-logo">
+                <img src={Logo} alt="GlassDoor" />
+            </div>
+            <div className="navbar-center">
+                <a onClick={ComunityNav}>Community</a>
+                <a onClick={JobsNav}>Jobs</a>
+                <a onClick={ComapanyNav}>Companies</a>
+                <a onClick={SalarisNav}>Salaries</a>
+            </div>
+            <div className="navbar-right">
+                <FaSearch className="icon" />
+                <FaBell className="icon" />
+                <FaUserCircle className="icon" />
+            </div>
+        </nav>
+    );
+}
+
+export default NavigationBar;

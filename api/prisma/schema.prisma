@@ -1,8 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
@@ -26,39 +22,26 @@ model User {
   email     String @unique
   password  String
   username  String
+  age       Int?
+  year_experience   Int?
+  preferred_job     String?
+  current_profession  String?
+
 }
 
 
 model Job {
   id                    Int    @id @default(autoincrement())
-  ext_id                String
   company_id            Int
   company_name          String
   company_logo          String?
   company_website_url   String?
   company_linkedin_url  String?
-  company_twitter_handle String?
-  company_github_url    String?
   job_title             String
   location              String
-  type_id               Int
   type_name             String
-  city_geonameid        Int?
-  city_asciiname        String?
   city_name             String?
-  city_country_code     String?
   city_country_name     String?
-  city_country_region_id Int?
-  city_country_region_name String?
-  city_timezone         String?
-  city_latitude         String?
-  city_longitude        String?
-  country_code          String?
-  country_name          String?
-  country_region_id     Int?
-  country_region_name   String?
-  region_id             Int?
-  region_name           String?
   has_remote            Boolean?
   published             DateTime
   description           String
@@ -66,10 +49,45 @@ model Job {
   application_url       String
   language              String
   clearance_required    Boolean
-  salary_min            Float?
-  salary_max            Float?
+  salary_min            String?
+  salary_max            String?
   salary_currency       String?
 }
 
 
+model Userdata {
+  username  String     @unique
+  jobs_bookmarks Int[]
+  company_bookmarks Int[]
+  search  Int[]
+}
 
+model Company {
+  company_id Int @id @default(autoincrement())
+  company_name String
+  rating Float
+  icon_url String
+  location String
+  company_size String
+  industry String
+  description String?
+  reviews_cnt String?
+  salary_cnt String?
+  jos_cnt String?
+}
+
+model Log {
+  id Int @id
+  is_login Boolean
+  user_email String
+}
+
+model Community {
+  id Int @id @default(autoincrement())
+  bowl_name String
+  info String 
+  icon String
+  description String?
+  image String?
+  time String
+}

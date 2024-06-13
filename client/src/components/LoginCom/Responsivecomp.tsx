@@ -8,7 +8,7 @@ import facebook from './images/facebook.png'
 import SignInwithGoogle from '../Signin/SigninwithGoogle';
 import SignInwithMail from '../Signin/SigninWithMail';
 
-const ResponsiveComponent = ({handleClick}:any) => {
+const ResponsiveComponent = () => {
 
   
   return (
@@ -36,7 +36,7 @@ const ResponsiveComponent = ({handleClick}:any) => {
       
       <input type="text" placeholder="Email" className="auth-input" />
       
-      <SignInwithMail props={handleClick} />
+      <SignInwithMail />
     </div>
 
       </div>

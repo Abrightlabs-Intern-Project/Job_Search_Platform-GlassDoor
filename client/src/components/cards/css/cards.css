@@ -1,0 +1,28 @@
+.smallcards{
+    /* background-color: green; */
+    background-color: white;
+    margin-left: 20px;
+}
+
+
+
+@media (max-width: 1100px) {
+.smallcards{
+    display: none;
+}
+.largeconatainer{
+    width: 100%;
+    /* background-color: blue; */
+    padding: 0px;
+    
+}
+
+.maincnt{
+    justify-content: center;
+    background-color: #f0f0f0,
+}
+.largecard{
+    width:100%;
+    padding: 0px;
+}
+}

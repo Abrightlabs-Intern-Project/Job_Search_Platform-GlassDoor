@@ -1,16 +1,22 @@
-import SearchInspirationComponent from "./components/LoginCom/Startsearch"
-import Profile from "./components/Signin/profile"
-import NavBar from "./components/navBarBeforeLog/NavBar"
+// import JobsCard from "./components/Afterlogin/JobsComp"
+import NavigationBar from "./components/Afterlogin/NavigationBar"
+import SearchBar from "./components/Afterlogin/SearchBar"
+import TabNavBar from "./components/Afterlogin/TabNavBar"
+import Demos from "./components/cards/demosjobs"
+// import Apps from "./demo/maindemo"
 
 
 function Afterlogin() {
 
     return (
       <>
-        <NavBar />
-        <div>main page</div>
-        <Profile />
-        <SearchInspirationComponent />
+        <NavigationBar />
+        <SearchBar />
+        <TabNavBar />
+        
+        {/* <JobsCard /> */}
+        {/* <Apps /> */}
+        <Demos />
       </>
     )
   }
