@@ -46,15 +46,19 @@
 }
 
 .easbtn{
-    height: 40px;
-    width:120px;
-    color:white;
+    height: 45px;
+    width:130px;
+    color:black;
     background-color: rgb(7, 168, 7);
     border: none;
     border-radius: 5px;
+    /* padding: 5px; */
 
 }
-
+.easbtn:hover{
+    background-color: green;
+    color: white;
+}
 .des{
     padding-left: 15px;
     font-size: 18px;

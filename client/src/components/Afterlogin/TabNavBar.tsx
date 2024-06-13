@@ -12,6 +12,7 @@ const TabNavBar: React.FC = () => {
                 <div className="tab-item">Search</div>
                 <div className="tab-item">Activity</div>
             </div>
+            <hr className='jobsep'/>
 
         </div>
     );

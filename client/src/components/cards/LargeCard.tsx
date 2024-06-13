@@ -16,6 +16,7 @@ const logos = {
 }
 
   return (
+    <>
     <div className="largecontain">
 
       <div className="topconatiner">
@@ -34,7 +35,9 @@ const logos = {
           </div>
           <div className="easyapply">
           <a href={props.some.application_url}>
-          <button className="easbtn">Easy Apply</button>
+          <button className="easbtn">
+            <span ><svg  width="13" height="18" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.049 11.945 8.69.104c.16-.219.505-.063.446.2l-1.678 7.64h5.008a.25.25 0 0 1 .203.397l-8.642 11.84c-.16.219-.505.064-.447-.2l1.678-7.638H.25a.25.25 0 0 1-.201-.398Z" fill="currentColor"></path></svg>
+            </span> Easy Apply</button>
           </a>
           </div>
        
@@ -76,6 +79,6 @@ const logos = {
 
     </div>
     
-    </div>
+    </div></>
   )
 }
