@@ -1,7 +1,7 @@
 import NavigationBar from "./components/Afterlogin/NavigationBar"
 import SearchBar from "./components/Afterlogin/SearchBar"
 import TabNavBar from "./components/Afterlogin/TabNavBar"
-import Demos from "./components/cards/demosjobs"
+import MainCard from "./components/cards/MainCard"
 
 
 
@@ -12,7 +12,7 @@ function Afterlogin() {
         <NavigationBar />
         <SearchBar />
         <TabNavBar />
-        <Demos />
+        <MainCard />
       </>
     )
   }

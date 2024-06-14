@@ -9,10 +9,7 @@ const SearchBar: React.FC = () => {
         <div className="search-bar">
             <FaSearch className="search-icon" />
             <input type="text one" placeholder="Search..." />
-            {/* <FaLocationDot className="search-icon loca" />
-            <input type="text two" placeholder="Search..." /> */}
         </div>
     );
 }
-
 export default SearchBar;

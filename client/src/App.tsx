@@ -4,7 +4,7 @@ import './App.css'
 // import BeforeLog from './BeforeLogin'
 import Afterlogin from './AfterLogin'
 import UserCheck from './UserCheck'
-import Demos from './components/cards/demosjobs'
+import Demos from './components/cards/MainCard'
 
 
 function App() {

@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { getAllJobs } from './queries';
 import { Job } from '../../models/model';
 
-const Demos: React.FC = () => {
+const MainCard: React.FC = () => {
   const { loading, error, data } = useQuery<{ getAllJobs: Job[] }>(getAllJobs);
 
   const [selectedCardContent, setSelectedCardContent] = useState<Job | null>(null);
@@ -66,4 +66,4 @@ const Demos: React.FC = () => {
   );
 };
 
-export default Demos;
+export default MainCard;
