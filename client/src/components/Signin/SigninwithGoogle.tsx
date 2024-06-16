@@ -7,7 +7,7 @@ function SignInwithGoogle() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider).then(async (result) => {
       console.log(result);
-        window.location.href = "/profile";
+        window.location.href = "/community";
       
     });
   }

@@ -12,10 +12,10 @@ const NavigationBar: React.FC = () => {
         window.location.href = "/jobs";
     }
     function ComapanyNav(){
-        window.location.href = "/comapany";
+        window.location.href = "/company";
     }
     function SalarisNav(){
-        window.location.href = "/salaries";
+        window.location.href = "/recomend";
     }
     return (
         <nav className="navbar">

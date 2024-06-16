@@ -4,7 +4,7 @@ function SignInwithMail2() {
   function mailLogin() {
   console.log("i am in")
 
-    window.location.href = "/profile";
+    window.location.href = "/community";
   }
   return (
    
