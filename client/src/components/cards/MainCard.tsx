@@ -28,18 +28,17 @@ const MainCard: React.FC = () => {
 
   return (
     <div className='maincnt' style={{ display: 'flex', height: '100vh' }}>
-      <div className='smallcards' style={{ width: '40%', overflowY: 'auto', padding: '10px', borderRight: '1px solid #ccc' }}>
+      <div className='smallcards' style={{ width: '40%', overflowY: 'auto', padding: '10px', borderRight: '0.5px solid #ccc' }}>
         {jobs.map((card: Job) => (
           <div className='smallcard'
-            key={card.id}
+            key={card.jobId}
             style={{
-              padding: '0px',
               margin: '10px 0',
               width: "90%",
               cursor: 'pointer',
               borderRadius: '10px',
-              boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-              transition: 'transform 0.2s, box-shadow 0.2s',
+              // boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+              // transition: 'transform 0.2s, box-shadow 0.2s',
             }}
             onClick={() => handleCardClick(card)}
             onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}

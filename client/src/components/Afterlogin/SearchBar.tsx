@@ -7,7 +7,7 @@ import './css/SearchBar.css';
 
 const SearchBar: React.FC = () => {
     return (
-        <div className="search-bar">
+        <div className="search-bar1">
             <FaSearch className="search-icon" />
             <input type="text one" placeholder="Search..." />
         </div>

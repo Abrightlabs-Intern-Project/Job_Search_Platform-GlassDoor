@@ -1,25 +1,18 @@
 export interface Job {
-    id: number;
-    company_id: number;
-    company_name: string;
-    company_logo?: string;
-    company_website_url?: string;
-    company_linkedin_url?: string;
-    job_title: string;
+    jobId: string;
+    company_id: string;
+    companyName: string;
+    iconUrl?: string;
+    jobTitle: string;
     location: string;
-    type_name: string;
-    city_name?: string;
-    city_country_name?: string;
-    has_remote?: boolean;
+    jobType: string;
+    hasRemote?: boolean;
     published: Date;
     description: string;
-    // experience_level?: string;
-    application_url: string;
+    applicationUrl: string;
     language: string;
-    clearance_required: boolean;
-    // salary_min?: number;
-    // salary_max?: number;
-    // salary_currency?: string;
+    clearanceRequired: boolean;
+    jobVacancies:number;
   }
 
 export interface Users{

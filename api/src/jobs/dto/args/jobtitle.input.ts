@@ -5,7 +5,7 @@ import {  IsNotEmpty } from "class-validator";
     export class GetPreferredJob{
         @Field()
         @IsNotEmpty()
-        job_title :string;
+        jobTitle :string;
 
 
     }

@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Job" ALTER COLUMN "salary_min" SET DATA TYPE TEXT,
-ALTER COLUMN "salary_max" SET DATA TYPE TEXT;

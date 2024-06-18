@@ -13,23 +13,21 @@ export const getAllJobs = gql`
 
 query{
   getAllJobs{
-    id                    
-  company_id            
-  company_name          
-  company_logo          
-  company_website_url   
-  company_linkedin_url  
-  job_title             
-  location              
-  type_name             
-  city_name             
-  city_country_name     
-  has_remote            
-  published             
-  description                 
-  application_url      
-  language              
-  clearance_required    
-      
+    jobId
+    companyId
+    companyName
+    iconUrl
+    jobTitle
+    location
+    jobType
+    hasRemote
+    published
+    description
+    applicationUrl
+    language
+    clearanceRequired
+    jobVacancies
+    
   }
-}`
+}
+  `

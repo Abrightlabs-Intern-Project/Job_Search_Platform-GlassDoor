@@ -4,7 +4,7 @@
     display: flex;
     width: 50%;
 }
-.search-bar {
+.search-bar1 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,15 +17,15 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar::before {
+.search-bar1::before {
     border-radius: 2px solid green;
 }
-.search-bar .search-icon {
+.search-bar1 .search-icon {
     margin-right: 10px;
     color: #666;
 }
 
-.search-bar input {
+.search-bar1 input {
     flex: 1;
     border: none;
     background: none;
