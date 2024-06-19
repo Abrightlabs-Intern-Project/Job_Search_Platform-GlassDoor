@@ -3,7 +3,7 @@ import './css/cards.css';
 import { SmallCards } from './SmallCards';
 import { LargeCard } from './LargeCard';
 import { useQuery } from '@apollo/client';
-import { getAllJobs } from './queries';
+import { getAllJobs } from '../../queries';
 import { Job } from '../../models/model';
 
 const MainCard: React.FC = () => {

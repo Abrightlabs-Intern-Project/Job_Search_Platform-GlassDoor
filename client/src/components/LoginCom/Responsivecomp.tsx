@@ -34,9 +34,9 @@ const ResponsiveComponent = () => {
       </button>
       <center>or</center>
       
-      <input type="text" placeholder="Email" className="auth-input" />
       
       <SignInwithMail />
+      <p className='createaccount'>create new account</p>
     </div>
 
       </div>

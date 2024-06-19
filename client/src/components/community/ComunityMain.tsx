@@ -4,8 +4,10 @@ import './css/communitymain.css'
 import lo from './images/graduation.png'
 import { PostsComp } from './PostsComp'
 import { Bowls } from './Bowls'
+import { auth } from '../Signin/firbase'
 
 export const ComunityMain = () => {
+    console.log(auth)
   return (
     <>
     <div className="maincommunity">

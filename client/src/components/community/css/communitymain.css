@@ -196,3 +196,15 @@
     border-bottom: solid;
     /* width: ; */
 }
+
+
+
+@media(max-width: 1100px) {
+
+    .bowlcont{
+        display: none;
+    }
+    .communitycont{
+        width:70%;
+    }
+}

@@ -56,6 +56,12 @@
 .facebook{
   height:100px;
 }
+
+.createaccount{
+  font-size: 15px;
+  text-align: end;
+  color: green;
+}
 /* .box2{
 
     flex:0;

@@ -22,7 +22,7 @@ model User {
   age                 Int?     @db.Integer
   yearsOfExperience   Int?     @db.Integer
   preferredJobPosition String? @db.VarChar(100)
-  currentProfession   String?  @db.VarChar(100)
+  location             String?  @db.VarChar(100)
   reviews             Review[]
   logs                Log[]
   communityPosts      CommunityPost[]

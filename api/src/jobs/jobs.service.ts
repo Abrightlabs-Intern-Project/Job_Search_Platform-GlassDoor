@@ -50,23 +50,7 @@ export class JobsService {
         const jobData = JSON.parse(fs.readFileSync('finaljobs.json', 'utf8'));
         console.log("upadting")
         for (const jo of jobData) {
-            console.log("inside loop")
-        //    const  names :string  = jo.companyName
-        //     const company = this.prisma.prismaClient.company.create({
-        //         data:{
-        //             companyName :"amazon",
-        //             companyWebsiteUrl:'amazon.in',
-        //             companyLinkedinUrl :'amazon.in',
-        //             rating :3.4,
-        //             iconUrl:'amazon.in',
-        //             location  :'bangalore',
-        //             companySize  :500,
-        //             industry            :'software devloper',
-        //             description           :'the amazon is great company',
-        //         }
-        //       });
-        //       console.log((await company).companyId)
-            // const jo = JSON.parse(jobs)
+       
             await this.prisma.prismaClient.job.create({
                 data:{
  
