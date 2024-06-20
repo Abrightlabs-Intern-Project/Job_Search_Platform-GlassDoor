@@ -2,25 +2,38 @@ import React, { useState, useEffect } from 'react';
 import './css/cards.css';
 import { SmallCards } from './SmallCards';
 import { LargeCard } from './LargeCard';
-import { useQuery } from '@apollo/client';
-import { getAllJobs } from '../../queries';
 import { Job } from '../../models/model';
 
 const MainCard: React.FC = () => {
-  const { loading, error, data } = useQuery<{ getAllJobs: Job[] }>(getAllJobs);
-
+  const [jobs, setJobs] = useState<Job[]>([]);
   const [selectedCardContent, setSelectedCardContent] = useState<Job | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (data && data.getAllJobs.length > 0) {
-      setSelectedCardContent(data.getAllJobs[0]);
-    }
-  }, [data]);
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/jobs');
+        if (!response.ok) {
+          throw new Error('Failed to fetch jobs');
+        }
+        const data: Job[] = await response.json();
+        setJobs(data);
+        if (data.length > 0) {
+          setSelectedCardContent(data[0]);
+        }
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  const jobs: Job[] = data?.getAllJobs || [];
+  if (error) return <p>Error: {error}</p>;
 
   const handleCardClick = (card: Job) => {
     setSelectedCardContent(card);
@@ -37,8 +50,6 @@ const MainCard: React.FC = () => {
               width: "90%",
               cursor: 'pointer',
               borderRadius: '10px',
-              // boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-              // transition: 'transform 0.2s, box-shadow 0.2s',
             }}
             onClick={() => handleCardClick(card)}
             onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}

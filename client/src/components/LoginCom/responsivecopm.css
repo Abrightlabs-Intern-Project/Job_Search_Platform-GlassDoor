@@ -58,9 +58,15 @@
 }
 
 .createaccount{
+  align-content: end;
   font-size: 15px;
   text-align: end;
   color: green;
+  margin-top: -8px;
+  margin-left: 180px;
+}
+.createaccount:hover{
+  text-decoration: underline;
 }
 /* .box2{
 

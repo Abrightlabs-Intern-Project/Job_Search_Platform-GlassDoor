@@ -1,9 +1,10 @@
 import NavigationBar from "../components/Afterlogin/NavigationBar"
+import { CompanyHeader } from "../components/companies/CompanyHeader"
 
 export const Company = () => {
   return (<>
     <NavigationBar />
-    <h1>company</h1>
+    <CompanyHeader />
 
 
 

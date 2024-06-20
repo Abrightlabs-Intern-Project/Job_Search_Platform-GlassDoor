@@ -1,0 +1,41 @@
+.companyheader{
+    display:flex;
+    background-color: #f3f9f5;
+    height:500px
+}
+
+.companyimg{
+    justify-content: center;
+    align-items: center;
+    width:50%
+}
+.companyimg img{
+    height: 500px;
+    width: 600px;
+}
+.companytext{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.texdiv{
+    width:70%;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .companyheader{
+        display:inline-block;
+    }
+    
+    .companyimg{
+        width:100%
+    }
+    
+    .companytext{
+        width: 100%;
+    }
+
+}
