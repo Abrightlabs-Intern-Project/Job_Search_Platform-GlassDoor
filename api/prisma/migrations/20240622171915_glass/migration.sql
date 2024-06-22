@@ -7,7 +7,7 @@ CREATE TABLE "User" (
     "age" INTEGER,
     "yearsOfExperience" INTEGER,
     "preferredJobPosition" VARCHAR(100),
-    "currentProfession" VARCHAR(100),
+    "location" VARCHAR(100),
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("userId")
 );
@@ -22,6 +22,7 @@ CREATE TABLE "Job" (
     "location" VARCHAR(100) NOT NULL,
     "jobType" VARCHAR(50) NOT NULL,
     "hasRemote" BOOLEAN,
+    "easyApply" BOOLEAN,
     "published" DATE NOT NULL,
     "description" TEXT NOT NULL,
     "applicationUrl" VARCHAR(255) NOT NULL,

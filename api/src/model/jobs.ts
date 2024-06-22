@@ -27,6 +27,9 @@ export class Job {
     hasRemote?: boolean;
 
     @Field()
+    easyApply?: boolean;
+
+    @Field()
     published: Date;
 
     @Field()

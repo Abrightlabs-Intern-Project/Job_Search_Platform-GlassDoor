@@ -1,7 +1,7 @@
 .companyheader{
     display:flex;
     background-color: #f3f9f5;
-    height:500px
+    height:450px
 }
 
 .companyimg{
@@ -17,6 +17,8 @@
     width: 50%;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
+    margin-left: -90px;
     /* background-color: aqua; */
 }
 .texdiv{
@@ -24,10 +26,59 @@
     align-items: center;
     justify-content: center;
 }
+.btndiv{
+    padding: 10px;
+    display: block;
+    justify-content: space-evenly;
+    width:70%;
+    color: #A9ACB2;
+    height: 100px;
 
+}
+.compbtn{
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 600;
+    border-width: 0.5px;
+    color: #757577;
+
+
+}
+
+.btn1{
+    margin-left: 25px;
+    margin-bottom: 10px;
+
+}
+.btn2{
+    margin-left: 20px;
+}
+.btn3{
+    margin-left: 25px;
+}
+.compbtn:hover{
+    color: #537cb2;
+}
+.paratext{
+    color: #454546;
+    font-size: 17px;
+}
+
+.parati{
+    font-size: 27px;
+}
+.new{
+    background-color: #98E1B1;
+    color: #0b6620;
+    font-size: 14px;
+    padding: 2px;
+}
 @media (max-width: 900px) {
     .companyheader{
         display:inline-block;
+        height: 750px;
     }
     
     .companyimg{
@@ -36,6 +87,9 @@
     
     .companytext{
         width: 100%;
+        margin-top: -80px;
+        margin-left: 10px;
     }
+
 
 }

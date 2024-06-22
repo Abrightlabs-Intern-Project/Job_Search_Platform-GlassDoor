@@ -38,6 +38,7 @@ model Job {
   location              String   @db.VarChar(100)
   jobType               String   @db.VarChar(50)
   hasRemote             Boolean? @db.Boolean
+  easyApply             Boolean?  @db.Boolean
   published             DateTime @db.Date
   description           String   @db.Text
   applicationUrl        String   @db.VarChar(255)

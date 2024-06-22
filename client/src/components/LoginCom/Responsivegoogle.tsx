@@ -63,7 +63,7 @@ const Responsivegoogle = () => {
         } finally {
             setLoading(false);
         }
-        window.location.href="/community";
+        window.location.href = "/community";
     };
 
     if (loading) {

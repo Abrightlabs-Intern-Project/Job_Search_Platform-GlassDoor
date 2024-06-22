@@ -1,60 +1,3 @@
-// import './responsivecopm.css';
-// import combine from './images/combinedImage.png';
-// import image1 from './images/comp1Image.png';
-// import image2 from './images/comp2Image.png';
-// import './worktext.css';
-// import facebook from './images/facebook.png'
-
-// import SignInwithGoogle from '../Signin/SigninwithGoogle';
-// import SignInwithMail from '../Signin/SigninWithMail';
-
-// const ResponsiveComponent = () => {
-//   function newaccount(){
-//     window.location.href = '/createnewaccount'
-//   }
-
-  
-//   return (
-//     <>
-//     <div className='text'><center>Your work people are here</center> </div>
-//     <div className="container">
-//     <img className='comb' src={combine} alt="" />
-//     <div className='text1'><center>Your work people are here</center> </div>
-
-//       <div className="box box1">
-//         <img src={image1} alt="" />
-//       </div>
-//       <div className="box box2">
-//       <div className="auth-container">
-//       <p className="initial-text">
-//         Create an account or sign in. By continuing, you agree to <br />our <a href="/terms">Terms of Use</a> and acknowledge our <a href="/privacy">Privacy Policy</a>.
-//       </p>
-//       <SignInwithGoogle />
-      
-//       <button className="auth-button facebook-button">
-//         <img className='facebook' src={facebook} alt="" />
-//         <i className="fab fa-facebook-f"></i> Continue with Facebook
-//       </button>
-//       <center>or</center>
-      
-      
-//       <SignInwithMail />
-//       <p onClick = {newaccount} className='createaccount'>New user? - create account</p>
-//     </div>
-
-//       </div>
-//       <div className="box box3">
-//         <img src={image2} alt="" />
-//       </div>
-//     </div>
-//     </>
-//   );
-// }
-
-// export default ResponsiveComponent;
-
-
-
 import  { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './responsivecopm.css';
@@ -66,6 +9,8 @@ import facebook from './images/facebook.png';
 import '../Signin/signinresgis.css'
 import SignInwithGoogle from '../Signin/SigninwithGoogle';
 import SignInwithMail from '../Signin/SigninWithMail';
+import newaccount from './images/newaccount.svg'
+
 
 interface User {
   email: string;
@@ -73,7 +18,7 @@ interface User {
   username: string;
   age: number;
   location?: string;
-  preferredJob?: string;
+  preferedProfession?: string;
   yearsOfExperience?: number;
 }
 
@@ -114,6 +59,7 @@ const ResponsiveComponent = () => {
   const handleFinalSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     try {
+      console.log(formData)
       const response = await fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
@@ -179,7 +125,7 @@ const ResponsiveComponent = () => {
           <div className="modal-content">
             <button onClick={handleCloseModal} className="close-button">X</button>
             <form onSubmit={step === 1 ? handleFirstStepSubmit : handleFinalSubmit}>
-             <center> <img src="https://www.glassdoor.co.in/assets/images/user-registration/identity/identity-en.svg" alt="" className=''/></center>
+             <center> <img src={newaccount} alt="" className=''/></center>
               <center><p className='titlecon'>{step === 1 ? 'What’s your identity?' : "Let's know more about you"}</p>
               </center>
 
@@ -214,7 +160,7 @@ const ResponsiveComponent = () => {
                   </div>
                   <div className="form-group">
                   <legend>Current Proffession:</legend>
-                    <input type="text" id="preferredJob" name="preferredJob" placeholder="Preferred Job" value={formData.preferredJob || ''} onChange={handleChange} required className="auth-input1" />
+                    <input type="text" id="preferredJob" name="preferedProfession" placeholder="Preferred Job" value={formData.preferedProfession || ''} onChange={handleChange} required className="auth-input1" />
                   </div>
                   <div className="form-group">
                     <legend>Years Of Experience:</legend>

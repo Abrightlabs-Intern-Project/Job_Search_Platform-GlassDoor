@@ -1,39 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './css/cards.css';
 import { SmallCards } from './SmallCards';
 import { LargeCard } from './LargeCard';
 import { Job } from '../../models/model';
 
-const MainCard: React.FC = () => {
-  const [jobs, setJobs] = useState<Job[]>([]);
-  const [selectedCardContent, setSelectedCardContent] = useState<Job | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+interface MainCardProps {
+  jobs: Job[];
+  initialSelectedCardContent: Job | null;
+}
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/jobs');
-        if (!response.ok) {
-          throw new Error('Failed to fetch jobs');
-        }
-        const data: Job[] = await response.json();
-        setJobs(data);
-        if (data.length > 0) {
-          setSelectedCardContent(data[0]);
-        }
-      } catch (error: any) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchJobs();
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+const MainCard: React.FC<MainCardProps> = ({ jobs, initialSelectedCardContent }) => {
+  const [selectedCardContent, setSelectedCardContent] = useState<Job | null>(initialSelectedCardContent);
 
   const handleCardClick = (card: Job) => {
     setSelectedCardContent(card);

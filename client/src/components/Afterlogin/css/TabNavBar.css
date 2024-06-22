@@ -54,3 +54,8 @@
 .jobsep{
     margin-top: -2px;
 }
+
+.active-tab {
+    color: green; 
+    text-decoration: underline;
+}

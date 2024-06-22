@@ -1,4 +1,3 @@
-// src/components/TabNavBar.tsx
 import React  from 'react';
 import './css/TabNavBar.css';
 
@@ -27,5 +26,4 @@ const TabNavBar: React.FC = () => {
         </div>
     );
 }
-
 export default TabNavBar;
