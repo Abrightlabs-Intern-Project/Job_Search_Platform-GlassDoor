@@ -11,7 +11,8 @@ export const LargeCard = (props:details) => {
 const logos = {
   logo_url:props.some.iconUrl,
   company_name:props.some.companyName,
-  website:props.some.applicationUrl
+  website:props.some.applicationUrl,
+  rating:props.some.company.rating
 
 }
 

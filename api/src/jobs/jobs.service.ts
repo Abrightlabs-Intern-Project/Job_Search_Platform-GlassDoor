@@ -12,7 +12,11 @@ export class JobsService {
 
 
     async getAllJobs(){
-        return this.prisma.prismaClient.job.findMany({})
+        return this.prisma.prismaClient.job.findMany({
+        include:{
+            company:true
+        }
+        })
     }
 
     async jobSearchByLocation(getpreferredlocation:GetPreferredLocation):Promise<Job[]> {

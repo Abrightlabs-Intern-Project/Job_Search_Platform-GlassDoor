@@ -40,22 +40,34 @@
     margin-left: 100px;
 }
 .filtercomp{
-    width:97%;
-    height: 100px;
+    width:98%;
+    /* height: 100px; */
     align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 .innerdiv{
-    width: 91%;
-    /* background-color: antiquewhite; */
+    width: 95%;
     display: flex;
+    margin-left: 30px;
+    justify-content: space-between;
 }
 .filterdiv{
     border-width: 0.5px;
     border: 1px solid rgb(202, 200, 200);
+    width:32%;
 
 }
 .separator{
     background-color: rgb(194, 194, 194);
+}
+.companydiv{
+    width:65%;
+    overflow-y: scroll;
+    height: 100vh;
+}
+.companydiv::-webkit-scrollbar {
+    display: none;
 }
 
 

@@ -32,6 +32,7 @@ const MainCard: React.FC<MainCardProps> = ({ jobs, initialSelectedCardContent })
             onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
             onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
           >
+            
             <SmallCards content={card} />
           </div>
         ))}

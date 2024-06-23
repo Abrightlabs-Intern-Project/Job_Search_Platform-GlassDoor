@@ -8,12 +8,12 @@ export class CompanyController {
     constructor(private readonly companyservice:CompanyService){}
 
 
-    @Get()
-    initadd(){
-        return this.companyservice.createcompany();
-    }
-    // @Post()
-    // getcompany(){
-    //     return this.companyservice.getcompany();
+    // @Get()
+    // initadd(){
+    //     return this.companyservice.createcompany();
     // }
+    @Get()
+    getallcompany(){
+        return this.companyservice.getAllCompany();
+    }
 }
