@@ -8,11 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// for hosting
-// datasource db {
-//   provider = "postgresql"
-//   url      = process.env.DATABASE_URL
-// }
+
 
 model User {
   userId              String   @id  @default(uuid()) @db.VarChar(36)
@@ -25,7 +21,6 @@ model User {
   location             String?  @db.VarChar(100)
   reviews             Review[]
   logs                Log[]
-  communityPosts      CommunityPost[]
   usersDatas          UserData?
 }
 
@@ -67,12 +62,13 @@ model Company {
 
 model CommunityPost {
   communityId   String   @id @default(uuid()) @db.VarChar(36)
+  communityIcon String  @db.VarChar(256)
+  communityName String  @db.VarChar(100)
   postTitle     String   @db.VarChar(100)
   postContent   String   @db.Text
   imageUrl      String?  @db.VarChar(255)
   postedAt      DateTime @default(now()) @db.Date
   userId        String   @db.VarChar(36)
-  user          User     @relation(fields: [userId], references: [userId])
 }
 
 model Review {

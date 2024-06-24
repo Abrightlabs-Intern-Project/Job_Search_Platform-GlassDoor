@@ -37,7 +37,7 @@
 }
 
 .expcom{
-    margin-left: 100px;
+    margin-left: 30px;
 }
 .filtercomp{
     width:98%;
@@ -64,11 +64,81 @@
 .companydiv{
     width:65%;
     overflow-y: scroll;
-    height: 100vh;
+    height: 105vh;
 }
 .companydiv::-webkit-scrollbar {
     display: none;
 }
+.head1{
+    padding: 10px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgb(202, 200, 200);
+    border-top:none ;
+    border-left: none;
+    border-right: none;
+}
+.filtercompy{
+font-size: 23px;
+font-weight: bold;
+margin-top: 5px;
+}
+.showingfi{
+    font-size: 18px;
+    margin-top: -15px;
+}
+.locdiv{
+    padding: 10px;
+    margin-top: -15px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgb(202, 200, 200);
+    border-top:none ;
+    border-left: none;
+    border-right: none;
+}
+.context{
+    color: rgb(105, 104, 104);
+}
+.coninp{
+    height: 35px;
+    width: 95%;
+    border-width: 0.1px;
+    border-color: rgb(202, 200, 200);
+    border-radius: 5px;
+    margin-top: -10px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: rgb(202, 200, 200);
+}
+.contextbold{
+    font-weight: bold;
+    font-size: 20px;
+}
+.rati{
+    color:black
+
+}
+.on{
+    margin-bottom: 5px;
+}
+
+.lastdi{
+    padding: 15px;
+}
+.buton{
+    background-color: white;
+    color:blue;
+    border: none;
+    font-size: 17px;
+}
+.buton:hover{
+    color:rgb(76, 76, 243);
+}
+
+
+
 
 
 @media (max-width: 900px) {

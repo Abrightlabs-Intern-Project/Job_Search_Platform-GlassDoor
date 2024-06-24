@@ -3,8 +3,8 @@ import NavigationBar from "../components/Afterlogin/NavigationBar";
 import MainCard from "../components/cards/MainCard";
 import { FaMapMarkerAlt, FaSearch, FaTimes } from 'react-icons/fa';
 import './css/search.css';
-import { SavedPages } from "../components/Saved/SavedPages";
 import { Job } from '../models/model';
+import SavedNav from '../components/Saved/SavedNav';
 
 const JobPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'foryou' | 'search' | 'saved'>('foryou');
@@ -237,7 +237,7 @@ const JobPage: React.FC = () => {
                     <MainCard jobs={filteredJobs} initialSelectedCardContent={selectedCardContent} />
                 </>
             )}
-            {activeTab === 'saved' && <SavedPages />}
+            {activeTab === 'saved' && <SavedNav />}
         </>
     );
 }

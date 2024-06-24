@@ -12,6 +12,11 @@ export class UsersController {
     findAll(){
         return this.userservice.getallusers();
     }
+
+    @Get('bookmark')
+    bookmark(){
+        return this.userservice.getallbookmarks();
+    }
     @Post()
     async createUser(@Body() createUser: CreateUserInput) {
         console.log('creating')

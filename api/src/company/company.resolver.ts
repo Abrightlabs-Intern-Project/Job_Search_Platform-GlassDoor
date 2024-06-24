@@ -25,10 +25,10 @@ export class CompanyResolver {
         return this.companyservice.getCompanyByName(getpreferredcompany)
     }
 
-    @Query(() => [Company])
-    updatecompanydata():Promise<Company[]>{
-        return this.companyservice.updatecompanydata();
-    }
+    // @Query(() => [Company])
+    // updatecompanydata():Promise<Company[]>{
+    //     return this.companyservice.updatecompanydata();
+    // }
 
 
 }

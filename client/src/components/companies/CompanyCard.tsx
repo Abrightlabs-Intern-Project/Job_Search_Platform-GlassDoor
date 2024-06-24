@@ -1,21 +1,21 @@
 import { Company } from '../../models/model'
 import './css/companycard.css'
-interface company{
-    company :Company
+interface companys{
+    companys :Company
 }
 
-export const CompanyCard = (props:company) => {
+export const CompanyCard = (props:companys) => {
   return (
     <>
     <div className='body'>
     <div className="company-card">
         <div className="header">
-            <img src={props.company.iconUrl} alt="Company Logo" />
+            <img src={props.companys.iconUrl} alt="Company Logo" />
             <div className="company-info">
-                <p className="company-name">{props.company.companyName}</p>
+                <p className="company-name">{props.companys.companyName}</p>
                 <div className="rating">
                     <i className="fas fa-star"></i>
-                    <span>{props.company.rating }  ★</span>
+                    <span>{props.companys.rating }  ★</span>
                 </div>
             </div>
 
@@ -39,20 +39,20 @@ export const CompanyCard = (props:company) => {
         <div className="details">
             <div className="detail detail1">
                 <strong>Location</strong>
-                {props.company.location}
+                {props.companys.location}
             </div>
             <div className="detail">
                 <strong>Global Company Size</strong>
-                {props.company.companySize}+ Employees
+                {props.companys.companySize}+ Employees
             </div>
             <div className="detail">
                 <strong>Industry</strong>
-                {props.company.industry}
+                {props.companys.industry}
             </div>
         </div>
         <div>
             <strong>Description</strong>
-            <p className="description">{props.company.description}...</p>
+            <p className="description">{props.companys.description}...</p>
         </div>
     </div>
     </div>

@@ -1,5 +1,6 @@
 type arr = [number,string,string,string,string,string,string]
-const commu_arry:arr[] = [
+
+export const Commu_arry:arr[] = [
     [1,'HiringInfo','works at Unisys India','https://dslntlv9vhjr4.cloudfront.net/bowls_images/035wYdyAZ9nWH.jpg',"Anyone who wants to apply to NTT Data, DM me with Job ID. can refer you.Good luck",'','3h'],
     [2,'HiringInfo','works at Infosys','https://dslntlv9vhjr4.cloudfront.net/bowls_images/035wYdyAZ9nWH.jpg',"Let me know if anyone is looking for below roles in Infosys",'https://dslntlv9vhjr4.cloudfront.net/posts_images/O0sYu6UpJUEec.jpg','19h'],
     [3,'HiringInfo','Tejas Ranadive','https://dslntlv9vhjr4.cloudfront.net/bowls_images/035wYdyAZ9nWH.jpg',"Good morning/afternoon. My name is Tejas Ranadive and I'm an experienced Executive Producer with over 18 years in the programming and production industry. I have proven expertise in handling all aspects of Pre- Production and post-production for TV shows,Ad films,Vfx",'','21h'],

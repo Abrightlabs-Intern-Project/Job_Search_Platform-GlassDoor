@@ -5,13 +5,14 @@
 }
 .smallcard{
     background-color: #ffffff;
+    height:165px;
     border-style: solid;
     /* border-top: none ; */
     border-left: none;
     border-right: none;
     border-width: 0.5px;
     border-color: rgb(204, 201, 201);
-    padding-bottom: 20px;
+    /* margin-bottom: -5px; */
 }
 
 .smallcards::-webkit-scrollbar {

@@ -48,7 +48,12 @@ export class UsersService {
     }
 
     async getallusers():Promise<User[]> {
+        console.log('jobs');
         return this.prisma.prismaClient.user.findMany({})
+    }
+    async getallbookmarks(){
+        console.log('bookmarks')
+        return this.prisma.prismaClient.userData.findMany({})
     }
 
     async userExists(userexist:Userexist):Promise<User | null>{

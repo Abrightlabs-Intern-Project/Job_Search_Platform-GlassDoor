@@ -28,9 +28,21 @@ export interface Job {
   companySize :        number    ;
   industry :           string ;
   description :        string  ;
+    jobs:Job[];
   }
 export interface Users{
   userid :number;
     username:string;
     email:string;
+}
+
+export interface CommunityPost {
+  communityId: string;
+  communityIcon: string;
+  communityName: string;
+  postTitle: string;
+  postContent: string;
+  imageUrl?: string;
+  postedAt: string; 
+  userId:string;
 }

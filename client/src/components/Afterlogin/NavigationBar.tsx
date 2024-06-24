@@ -18,7 +18,7 @@ const NavigationBar: React.FC = () => {
         window.location.href = "/recomend";
     }
     return (
-        <nav className="navbar">
+        <nav className="navbar1">
             <div className="navbar-logo">
                 <img src={Logo} alt="GlassDoor" />
             </div>
