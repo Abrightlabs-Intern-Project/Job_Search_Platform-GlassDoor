@@ -10,7 +10,7 @@ export const SavedJobs: React.FC = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('http://localhost:3000/jobs');
+        const response = await fetch('http://localhost:3000/users/userjobsbookmark');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

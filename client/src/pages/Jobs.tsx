@@ -109,7 +109,7 @@ const JobPage: React.FC = () => {
     });
 
     const generateJobsCountText = () => {
-        const totalJobs = jobs.length;
+        // const totalJobs = jobs.length;
         const filteredJobsCount = filteredJobs.length;
         let text = `${filteredJobsCount} jobs found`;
 

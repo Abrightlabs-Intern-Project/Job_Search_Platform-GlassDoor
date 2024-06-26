@@ -26,6 +26,9 @@ export class JobsService {
                     contains:getpreferredlocation.location,
                     mode: 'insensitive',
                 }
+            },
+            include:{
+                company:true
             }
         })
 
@@ -41,6 +44,9 @@ export class JobsService {
                     contains:getpreferredjob.jobTitle,
                     mode: 'insensitive',
                 }
+            },
+            include:{
+                company:true
             }
         })
 
@@ -49,40 +55,40 @@ export class JobsService {
     }
 
 
-    async updatejobsdata(){
-        const fs = require('fs');
-        const jobData = JSON.parse(fs.readFileSync('finaljobs.json', 'utf8'));
-        console.log("upadting")
-        for (const jo of jobData) {
+    // async updatejobsdata(){
+    //     const fs = require('fs');
+    //     const jobData = JSON.parse(fs.readFileSync('finaljobs.json', 'utf8'));
+    //     console.log("upadting")
+    //     for (const jo of jobData) {
        
-            await this.prisma.prismaClient.job.create({
-                data:{
+    //         await this.prisma.prismaClient.job.create({
+    //             data:{
  
-                    companyId:uuid(),
-                    companyName :jo.companyName,
-                    iconUrl :jo.iconUrl,
-                    jobTitle :jo.jobTitle,
-                    location  :jo.location,
-                    jobType  :jo.jobType,
-                    hasRemote            :jo.hasRemote,
-                    published             :jo.published,
-                    description           :jo.description,
-                    applicationUrl       :jo.applicationUrl,
-                    language              :jo.language,
-                    clearanceRequired    :jo.clearanceRequired,
-                    salaryCurrency       :jo.salaryCurrency,
-                    jobVacancies :jo.jobVacancies,
+    //                 companyId:uuid(),
+    //                 companyName :jo.companyName,
+    //                 iconUrl :jo.iconUrl,
+    //                 jobTitle :jo.jobTitle,
+    //                 location  :jo.location,
+    //                 jobType  :jo.jobType,
+    //                 hasRemote            :jo.hasRemote,
+    //                 published             :jo.published,
+    //                 description           :jo.description,
+    //                 applicationUrl       :jo.applicationUrl,
+    //                 language              :jo.language,
+    //                 clearanceRequired    :jo.clearanceRequired,
+    //                 salaryCurrency       :jo.salaryCurrency,
+    //                 jobVacancies :jo.jobVacancies,
 
-                    }
+    //                 }
 
 
-                }
-            );
-            console.log('Data added successfully');
-        }
-        return this.prisma.prismaClient.job.findMany({})
+    //             }
+    //         );
+    //         console.log('Data added successfully');
+    //     }
+    //     return this.prisma.prismaClient.job.findMany({})
     
-    }
+    // }
 
 
 

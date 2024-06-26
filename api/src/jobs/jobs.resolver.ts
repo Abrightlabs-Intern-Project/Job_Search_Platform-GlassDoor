@@ -14,18 +14,18 @@ export class JobsResolver {
     }
 
 
-    @Query(() => [Job])
-    getJobByLocation(@Args('getpreferredlocation') getpreferredlocation:GetPreferredLocation): Promise<Job[]>{
-        return this.jobsservice.jobSearchByLocation(getpreferredlocation)
-    }
+    // @Query(() => [Job])
+    // getJobByLocation(@Args('getpreferredlocation') getpreferredlocation:GetPreferredLocation): Promise<Job[]>{
+    //     return this.jobsservice.jobSearchByLocation(getpreferredlocation)
+    // }
 
-    @Query(() => [Job])
-    jobSearchByTitle(@Args('getpreferredjob') getpreferredjob:GetPreferredJob): Promise<Job[]>{
-        return this.jobsservice.jobSearchByTitle(getpreferredjob)
-    }
+    // @Query(() => [Job])
+    // jobSearchByTitle(@Args('getpreferredjob') getpreferredjob:GetPreferredJob): Promise<Job[]>{
+    //     return this.jobsservice.jobSearchByTitle(getpreferredjob)
+    // }
 
-    @Query(() => [Job])
-    updatejobsdata():Promise<Job[]>{
-        return this.jobsservice.updatejobsdata();
-    }
+    // @Query(() => [Job])
+    // updatejobsdata():Promise<Job[]>{
+    //     return this.jobsservice.updatejobsdata();
+    // }
 }

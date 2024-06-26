@@ -15,15 +15,15 @@ export class CompanyResolver {
         return this.companyservice.getAllCompany();
     }
 
-    @Query(() => [Company])
-    getCompanyByLocation(@Args('getpreferredcompanylocation') getpreferredcompanylocation:GetPreferredCompanyLocation): Promise<Company[]>{
-        return this.companyservice.getCompanyByLocation(getpreferredcompanylocation)
-    }
+    // @Query(() => [Company])
+    // getCompanyByLocation(@Args('getpreferredcompanylocation') getpreferredcompanylocation:GetPreferredCompanyLocation): Promise<Company[]>{
+    //     return this.companyservice.getCompanyByLocation(getpreferredcompanylocation)
+    // }
 
-    @Query(() => [Company])
-    getCompanyByName(@Args('getpreferredcompany') getpreferredcompany:GetPreferredCompany): Promise<Company[]>{
-        return this.companyservice.getCompanyByName(getpreferredcompany)
-    }
+    // @Query(() => [Company])
+    // getCompanyByName(@Args('getpreferredcompany') getpreferredcompany:GetPreferredCompany): Promise<Company[]>{
+    //     return this.companyservice.getCompanyByName(getpreferredcompany)
+    // }
 
     // @Query(() => [Company])
     // updatecompanydata():Promise<Company[]>{

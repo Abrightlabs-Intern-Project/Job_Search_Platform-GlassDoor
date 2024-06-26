@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { GetPreferredCompanyLocation } from './dto/args/companylocation.args';
-import { Company } from '@prisma/client';
+// import { Company } from '@prisma/client';
 import { GetPreferredCompany } from './dto/args/companyname.args';
+import { Company } from 'src/model/company';
+import { Job } from 'src/model/jobs';
+import { companywithjobscombined } from './dto/args/createcompanywithjobs.args';
 // import { Company } from 'src/model/company';
 
 @Injectable()
@@ -10,6 +13,10 @@ export class CompanyService {
 
     constructor(private prisma:PrismaService){}
 
+    async createNewCompany(newcompanydata:Company) {
+        return this.prisma.prismaClient.company.create({data:newcompanydata})
+
+    }
 
     async getAllCompany() {
         return this.prisma.prismaClient.company.findMany({
@@ -21,15 +28,55 @@ export class CompanyService {
     }
 
 
-    async getcompany(name:string){
-
+    async getcompany(name: string) {
         const company = await this.prisma.prismaClient.company.findMany({
-            where: {
-      companyName: name,
+          where: {
+            companyName: {
+              contains: name,
+              mode: 'insensitive'
+            }
+          }
+        });
+        return company[0];
+      }
+
+    async createnewjobpost(jobspost:Job){
+        const comp = this.getcompany(jobspost.companyName)
+            
+            if( (await comp)){
+                const id = await((await comp).companyId);
+                console.log('if');        
+                return this.prisma.prismaClient.job.create({data:{
+            companyId:id,
+            ...jobspost,
+        }});
     }
-  });
-  return company[0]
+    else{
+        return this.prisma.prismaClient.job.create({data:{
+            companyId:'626e3f73-7620-48f8-8276-6a08c20c175c',
+            ...jobspost,
+        }})
     }
+}
+
+    async createnewcompanyjobpost(newcompanyjobspost:companywithjobscombined){
+        const newCompany = await this.prisma.prismaClient.company.create({
+            data: {
+                ...newcompanyjobspost.company
+            }
+        });
+
+        const job = await this.prisma.prismaClient.job.create({
+            data: {
+              companyId: newCompany.companyId,
+              ...newcompanyjobspost.job
+            },
+          });
+
+          return newCompany
+    } 
+
+    
 
     async createcompany(){
         const fs = require('fs');
@@ -110,6 +157,10 @@ export class CompanyService {
                     contains:getpreferredcompanylocation.location,
                     mode: 'insensitive',
                 }
+                
+            }
+            ,include:{
+                jobs:true
             }
         })
 
@@ -124,6 +175,9 @@ export class CompanyService {
                     contains:getpreferredcompany.companyName,
                     mode: 'insensitive',
                 }
+            }
+            ,include:{
+                jobs:true
             }
         })
 

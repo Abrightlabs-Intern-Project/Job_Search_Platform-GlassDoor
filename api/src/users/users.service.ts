@@ -75,6 +75,32 @@ console.log(await(user.email,user.password))
         if(await(user.password === emailpass.password)){
             return true;
         }
+
         return false;}
+
+        async bookmark(){
+            const jobsid = this.prisma.prismaClient.userData.findUnique({where:{
+                userId:'57f344e0-c2b4-4984-a647-ab1325139ae3',
+            }})
+            const ids = (await jobsid).bookmarksJobsId
+            return this.getJobsByIds(ids)
+        }
+
+        async  getJobsByIds(jobids: string[]) {
+              const jobs = await this.prisma.prismaClient.job.findMany({
+                where: {
+                  jobId: {
+                    in: jobids
+                  },
+                  
+                },
+                include:{
+                    company:true
+                }
+              });
+              return jobs;
+            
+        } 
+        
     
 }
