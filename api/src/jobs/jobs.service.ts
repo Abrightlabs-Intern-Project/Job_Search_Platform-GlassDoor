@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { GetPreferredLocation } from './dto/args/joblocation.args';
 import { GetPreferredJob } from './dto/args/jobtitle.input';
-import { Job } from '@prisma/client';
 import { uuid } from 'uuidv4';
+import { Job } from 'src/model/jobs';
 
 @Injectable()
 export class JobsService {

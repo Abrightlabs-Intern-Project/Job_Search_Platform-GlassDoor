@@ -7,6 +7,7 @@ import { Emailpass } from './dto/input/emailpass.input';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 import { Job } from 'src/model/jobs';
+import { JobId } from './dto/input/jobid.input';
 
 
 @Controller('users')
@@ -29,7 +30,6 @@ export class UsersController {
     @Post()
     @ApiCreatedResponse({ type: User })
     async createUser(@Body() createUser: CreateUserInput) {
-        console.log('creating')
       return this.userservice.createUser(createUser);
     }
 
@@ -37,11 +37,8 @@ export class UsersController {
     @Post('exists')
     @ApiOkResponse({ type: Boolean })
     async userExists(@Body() userexit: Userexist): Promise<boolean> {
-      const user = this.userservice.userExists(userexit);
-      if( await(user) === null){
-        return false;
-      }
-      return true;
+      return this.userservice.userExists(userexit);
+      
     }
 
     @Delete()
@@ -54,13 +51,33 @@ export class UsersController {
     @ApiOkResponse({ type: Boolean })
     async checkMailPassword(@Body() emailpass:Emailpass){
     return this.userservice.checkMailPassword(emailpass);
-}
+  }
+
+  @Post('addbookmark')
+    @ApiOkResponse({ type: Boolean })
+    async addbookmark(@Body() jobid:JobId){
+    return this.userservice.addbookmark(jobid);
+  }
+
+  @Post('removebookmark')
+    @ApiOkResponse({ type: Boolean })
+    async removebookmark(@Body() jobid:JobId){
+    return this.userservice.removeBookmark(jobid);
+  }
 
   @Get('userjobsbookmark')
   @ApiOkResponse({ type: [Job] })
   async userjobsbookmark(){
     return this.userservice.bookmark();
   }
+
+  @Get('bookmarkjobsid')
+  @ApiOkResponse({ type: [String] })
+  async bookmarkjobsid(){
+    return this.userservice.bookmarkjobsid();
+  }
+
+
 
   
 

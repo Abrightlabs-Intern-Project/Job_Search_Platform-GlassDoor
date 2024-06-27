@@ -5,6 +5,7 @@ import { CreateUserInput } from './dto/input/createuser.input';
 import { uuid } from 'uuidv4';
 import { Userexist } from './dto/input/userexist.input';
 import { Emailpass } from './dto/input/emailpass.input';
+import { JobId } from './dto/input/jobid.input';
 
 
 
@@ -24,43 +25,45 @@ export class UsersService {
             age:createuserdata.age,
             yearsOfExperience:createuserdata.yearsOfExperience
         }
-  
-        return  this.prisma.prismaClient.user.create({
+        
+        const user = await this.prisma.prismaClient.user.create({
             data :newuser
           });
-    }
 
-    async createingUser(email:string,username:string,password:string,age:number,yearsOfExperience:number,location:string,preferedProfession:string): Promise<User>{
-        const newuser :User = {
-            userId : uuid(),
-            email: email,
-            password:password,
-            username:username,
-            location:location,
-            preferredJobPosition:preferedProfession,
-            age:age,
-            yearsOfExperience:yearsOfExperience
-        }
-  
-        return  this.prisma.prismaClient.user.create({
-            data :newuser
-          });
+          await this.prisma.prismaClient.userData.create({data:{
+            userId:user.userId,
+        }});
+
+        await this.prisma.prismaClient.log.deleteMany();
+        await this.prisma.prismaClient.log.create({data:{
+            isLogin:true,
+            userEmail:user.email
+        }})
+
+        return  user;
     }
 
     async getallusers():Promise<User[]> {
-        console.log('jobs');
         return this.prisma.prismaClient.user.findMany({})
     }
     async getallbookmarks(){
-        console.log('bookmarks')
         return this.prisma.prismaClient.userData.findMany({})
     }
 
-    async userExists(userexist:Userexist):Promise<User | null>{
+    async userExists(userexist:Userexist):Promise<boolean | null>{
+        await this.prisma.prismaClient.log.deleteMany();
+        await this.prisma.prismaClient.log.create({data:{
+            isLogin:true,
+            userEmail:userexist.email
+        }})
         const user = this.prisma.prismaClient.user.findUnique({where:{
             email:userexist.email,
         }})
-        return user
+        if( await(user) === null){
+            return false;
+          }
+          
+          return true;
     }
     async deleteallusers(){
         return this.prisma.prismaClient.user.deleteMany({})
@@ -73,14 +76,29 @@ export class UsersService {
           }
 console.log(await(user.email,user.password))
         if(await(user.password === emailpass.password)){
+           await this.prisma.prismaClient.log.deleteMany();
+            await this.prisma.prismaClient.log.create({data:{
+            isLogin:true,
+            userEmail:emailpass.email
+        }})
+
             return true;
         }
 
         return false;}
 
+        async getuserid(){
+            const user = await this.prisma.prismaClient.log.findMany({include:{
+                user:true
+            }})
+            const users = await(user[0])
+            return users.user
+        }
+
         async bookmark(){
+            const id = this.getuserid()
             const jobsid = this.prisma.prismaClient.userData.findUnique({where:{
-                userId:'57f344e0-c2b4-4984-a647-ab1325139ae3',
+                userId:(await id).userId,
             }})
             const ids = (await jobsid).bookmarksJobsId
             return this.getJobsByIds(ids)
@@ -101,6 +119,41 @@ console.log(await(user.email,user.password))
               return jobs;
             
         } 
+        async bookmarkjobsid(){
+            const id = this.getuserid()
+            const userid = (await id).userId
+            const data = this.prisma.prismaClient.userData.findUnique({
+                where: {userId:userid},
+                
+            })
+            return (await data).bookmarksJobsId
+        }
+        async addbookmark(jobid:JobId){
+            const id = this.getuserid()
+            const userid = (await id).userId
+            return this.prisma.prismaClient.userData.update({
+                where: {userId:userid},
+                data:{bookmarksJobsId:{
+                    push:jobid.jobId,
+                }}
+            })
+        }
+        async removeBookmark(jobid: JobId) {
+            const id = this.getuserid();
+            const userid = (await id).userId;
+        
+            return this.prisma.prismaClient.userData.update({
+                where: { userId: userid },
+                data: {
+                    bookmarksJobsId: {
+                        set: (await this.prisma.prismaClient.userData.findUnique({
+                            where: { userId: userid },
+                            select: { bookmarksJobsId: true },
+                        })).bookmarksJobsId.filter((bookmarkId) => bookmarkId !== jobid.jobId),
+                    },
+                },
+            });
+        }
         
     
 }

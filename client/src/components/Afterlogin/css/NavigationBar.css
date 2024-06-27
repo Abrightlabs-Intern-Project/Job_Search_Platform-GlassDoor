@@ -50,3 +50,7 @@
 .navbar-right .icon:hover {
     color: rgb(10, 143, 68); /* Glassdoor-like hover color */
 }
+.nonebut{
+    border: none;
+    background-color: white;
+}

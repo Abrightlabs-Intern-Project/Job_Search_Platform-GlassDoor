@@ -15,22 +15,22 @@ export class UsersResolver {
         return this.userservice.createUser(createUserData)
     }
 
-    @Mutation(() => User)
-    createingUser(
+//     @Mutation(() => User)
+//     createingUser(
 
-    @Args('email') email:string , 
-    @Args('password') password:string ,
-    @Args('username') username:string ,
-    @Args('age') age:number ,
-    @Args('yearsOfExperience') yearsOfExperience:number,
-    @Args('location') location:string,
-    @Args('preferedProfession') preferedProfession:string
+//     @Args('email') email:string , 
+//     @Args('password') password:string ,
+//     @Args('username') username:string ,
+//     @Args('age') age:number ,
+//     @Args('yearsOfExperience') yearsOfExperience:number,
+//     @Args('location') location:string,
+//     @Args('preferedProfession') preferedProfession:string
     
 
-): Promise<User>{
-        console.log('request for creating new user')
-        return this.userservice.createingUser(email,password,username,age,yearsOfExperience,location,preferedProfession)
-    }
+// ): Promise<User>{
+//         console.log('request for creating new user')
+//         return this.userservice.createingUser(email,password,username,age,yearsOfExperience,location,preferedProfession)
+//     }
 
 
     // @Query(() => User,{nullable: true} )

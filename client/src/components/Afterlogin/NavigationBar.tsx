@@ -31,7 +31,9 @@ const NavigationBar: React.FC = () => {
             <div className="navbar-right">
                 <FaSearch className="icon" />
                 <FaBell className="icon" />
+                <button className='nonebut'>
                 <FaUserCircle className="icon" />
+                </button> 
             </div>
         </nav>
     );
