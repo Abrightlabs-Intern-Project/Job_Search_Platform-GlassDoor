@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import './signinresgis.css'
+import { api } from '../../models/model';
 interface User {
   email: string;
   password: string;
@@ -39,7 +40,7 @@ const RegistrationForm: React.FC = () => {
     e.preventDefault();
     try {
         console.log(formData)
-      const response = await fetch('http://localhost:3000/users', {
+      const response = await fetch(`${api}users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

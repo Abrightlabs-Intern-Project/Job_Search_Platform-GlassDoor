@@ -1,4 +1,5 @@
 import NavigationBar from "../components/Afterlogin/NavigationBar"
+import SearchInspirationComponent from "../components/LoginCom/Startsearch"
 import { ComunityMain } from "../components/community/ComunityMain"
 
 export const Community = () => {
@@ -6,6 +7,7 @@ export const Community = () => {
     <>
         <NavigationBar />
         <ComunityMain />
+        <SearchInspirationComponent />
     
     
     

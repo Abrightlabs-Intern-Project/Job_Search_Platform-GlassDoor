@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 import './css/companydata.css';
 import image1 from './images/locked-community.png';
+import { api } from '../../models/model';
 
 export const CompanyData: React.FC = () => {
   const [companyName, setCompanyName] = useState<string>('');
@@ -30,7 +31,7 @@ export const CompanyData: React.FC = () => {
     console.log(companyData)
 
     try {
-      const response = await fetch('http://localhost:3000/company/createnewcompany', {
+      const response = await fetch(`${api}company/createnewcompany`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

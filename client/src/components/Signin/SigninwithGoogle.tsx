@@ -2,6 +2,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./firbase"; 
 import google from '../LoginCom/images/google.png';
 import { useState, useEffect } from "react";
+import { api } from "../../models/model";
 
 function SignInwithGoogle() {
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -18,7 +19,7 @@ function SignInwithGoogle() {
 
   const fetchUserExists = async (email: string) => {
     try {
-      const response = await fetch('http://localhost:3000/users/exists', {
+      const response = await fetch(`${api}users/exists`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

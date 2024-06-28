@@ -46,3 +46,7 @@ export interface CommunityPost {
   postedAt: string; 
   userId:string;
 }
+
+export const api = 'http://localhost:3000/'
+
+// export const api = 'https://glassdoor.koyeb.app/'

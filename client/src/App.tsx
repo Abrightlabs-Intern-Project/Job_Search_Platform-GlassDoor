@@ -9,6 +9,7 @@ import { Checkinggoogle } from './components/Signin/Checkinggoogle'
 import { NewGoogleuser } from './components/Signin/newGoogleuser'
 import RegistrationForm from './components/Signin/signinregisteration'
 import JobPage from './pages/Jobs'
+import { Profile } from './pages/Profile'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/recomend" element={<Recommended />} />
         <Route path="/company" element={<Company />} />
          <Route path="/jobs" element={<JobPage />} />
+         <Route path="/profilepage" element={<Profile />} />
          <Route path="/checkinggoogle" element={<Checkinggoogle />} />
         <Route path="/newuser" element={<NewGoogleuser />} />
         <Route path='/createnewaccount' element={<RegistrationForm />} />

@@ -10,6 +10,7 @@ import '../Signin/signinresgis.css'
 import SignInwithGoogle from '../Signin/SigninwithGoogle';
 import SignInwithMail from '../Signin/SigninWithMail';
 import newaccount from './images/newaccount.svg'
+import { api } from '../../models/model';
 
 
 interface User {
@@ -60,7 +61,7 @@ const ResponsiveComponent = () => {
     e.preventDefault();
     try {
       console.log(formData)
-      const response = await fetch('http://localhost:3000/users', {
+      const response = await fetch(`${api}users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

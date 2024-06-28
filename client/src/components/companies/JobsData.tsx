@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 import './css/companydata.css';
 import image3 from './images/locked-jobs.png';
+import { api } from '../../models/model';
 
 export const JobsData: React.FC = () => {
   const [jobTitle, setJobTitle] = useState<string>('');
@@ -39,7 +40,7 @@ export const JobsData: React.FC = () => {
     console.log(jobData)
 
     try {
-      const response = await fetch('http://localhost:3000/company/createNewjobpost', {
+      const response = await fetch(`${api}company/createNewjobpost`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import './css/companydata.css';
 import image2 from './images/locked-companies.png';
+import { api } from '../../models/model';
 
 export const CompanyWithJobs = () => {
   const [showJobs, setShowJobs] = useState(false);
@@ -72,7 +73,7 @@ export const CompanyWithJobs = () => {
     console.log(combinedData);
 
     try {
-      const response = await fetch('http://localhost:3000/company/companywithjobs', {
+      const response = await fetch(`${api}company/companywithjobs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

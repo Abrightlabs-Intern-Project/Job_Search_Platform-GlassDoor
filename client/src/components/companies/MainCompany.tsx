@@ -1,10 +1,8 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
 import { CompanyCard } from './CompanyCard';
 import './css/maincompany.css';
-import SearchInspirationComponent from '../LoginCom/Startsearch';
-import { Company } from '../../models/model';
+import { Company, api } from '../../models/model';
 
-// Define types for the Company and Job
 
 export const MainCompany: React.FC = () => {
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -17,7 +15,7 @@ export const MainCompany: React.FC = () => {
   const [companyName, setCompanyName] = useState<string>('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/company')
+    fetch(`${api}company`)
       .then(response => response.json())
       .then((data: Company[]) => {
         setCompanies(data);
@@ -198,7 +196,6 @@ export const MainCompany: React.FC = () => {
           </div>
         </div>
       </div>
-      <SearchInspirationComponent />
     </>
   );
 };

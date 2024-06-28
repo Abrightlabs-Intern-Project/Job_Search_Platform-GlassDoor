@@ -39,6 +39,7 @@
     border: none;
     padding-left: 10px;
     width: 100px;
+    cursor: pointer;
 
 }
 .viewbtn:hover{
@@ -51,6 +52,7 @@
     background-color: white;
     font-size:17px;
     border-width: 0.5px;
+    cursor: pointer;
 }
 .flwbtn:hover{
     background-color: green;

@@ -6,6 +6,7 @@ import './worktext.css';
 import './responsivegoogle.css';
 import { useState } from 'react';
 import { auth } from '../Signin/firbase';
+import { api } from '../../models/model';
 
 const Responsivegoogle = () => {
     const [age, setAge] = useState<number | undefined>(undefined);
@@ -34,7 +35,7 @@ const Responsivegoogle = () => {
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:3000/users', {
+            const response = await fetch(`${api}users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

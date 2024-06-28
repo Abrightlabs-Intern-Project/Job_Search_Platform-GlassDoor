@@ -18,10 +18,11 @@ export const Bowls = (props:bowls) => {
             <p className="bowltitle">{props.bowl.name}</p>
             <p className="bowldesc">{props.bowl.desc}</p>
             <div className="div3">
+            <a href="https://www.glassdoor.co.in/Community/search/bowls">
                 <button className="viewbtn"> 
                     view
-                </button>
-                <button className="flwbtn">Follow</button>
+                </button></a>
+                <a href="https://www.glassdoor.co.in/Community/search/bowls"><button className="flwbtn">Follow</button></a>
 
             </div>
         </div>

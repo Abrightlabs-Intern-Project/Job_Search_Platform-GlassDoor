@@ -3,15 +3,19 @@ import NavigationBar from "../components/Afterlogin/NavigationBar";
 import MainCard from "../components/cards/MainCard";
 import { FaMapMarkerAlt, FaSearch, FaTimes } from 'react-icons/fa';
 import './css/search.css';
-import { Job } from '../models/model';
+import { Job, api } from '../models/model';
 import SavedNav from '../components/Saved/SavedNav';
 
+const url = `${api}jobs`
+console.log(url)
 const JobPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'foryou' | 'search' | 'saved'>('foryou');
     const [jobs, setJobs] = useState<Job[]>([]);
     const [selectedCardContent, setSelectedCardContent] = useState<Job | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+    // const [error, setError] = useState<string | null>(null);
+    const [error, ] = useState<string | null>(null);
+
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [locationTerm, setLocationTerm] = useState<string>('');
     const [showRatingPopup, setShowRatingPopup] = useState<boolean>(false);
@@ -24,7 +28,7 @@ const JobPage: React.FC = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const response = await fetch('http://localhost:3000/jobs');
+                const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error('Failed to fetch jobs');
                 }
@@ -34,7 +38,7 @@ const JobPage: React.FC = () => {
                     setSelectedCardContent(data[0]);
                 }
             } catch (error: any) {
-                setError(error.message);
+                // setError(error.message);
             } finally {
                 setLoading(false);
             }

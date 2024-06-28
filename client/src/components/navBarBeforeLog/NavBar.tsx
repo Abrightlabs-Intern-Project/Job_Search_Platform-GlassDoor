@@ -14,7 +14,7 @@ const NavBar: React.FC = () => {
     const data = [{ key: 'Community', header: 'Your work people are here', content: 'Connect anonymously with professionals about work, pay, life and more.', image: image1 },
     { key: 'Jobs', header: 'Find the right job', content: 'Millions of jobs. Search by what matters to you and find the one that right for you.', image: image2 },
     { key: 'Companies', header: 'Read millions of reviews', content: 'Read anonymous reviews on over 600,000 companies worldwide from the people that work there.', image: image3 },
-    { key: 'Salries', header: 'Compare salaries', content: 'Are you paid fairly? Get a free, personalised salary estimate and compare with millions of salaries.', image: image4 },
+    { key: 'Salaries', header: 'Compare salaries', content: 'Are you paid fairly? Get a free, personalised salary estimate and compare with millions of salaries.', image: image4 },
     { key: 'For Employers', header: 'Sign in to Employer Centre', content: 'Manage your company profile, view analytics, and respond to reviews.', image: image5 }
     ];
     const handleMouseEnter = (item: string) => {

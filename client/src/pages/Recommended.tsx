@@ -1,11 +1,13 @@
 import NavigationBar from "../components/Afterlogin/NavigationBar"
+import SearchInspirationComponent from "../components/LoginCom/Startsearch"
+import { Salaryimage } from "../components/Salary/Salaryimage"
 
 export const Recommended = () => {
   return (
 <>
         <NavigationBar />
-        <h1>Recommended</h1>
-    
+        <Salaryimage />    
+        <SearchInspirationComponent />
     
     
     </>  )

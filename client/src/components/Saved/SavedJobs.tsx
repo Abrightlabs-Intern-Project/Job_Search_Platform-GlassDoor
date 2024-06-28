@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Job } from '../../models/model';
+import { Job, api } from '../../models/model';
 import MainCard1 from './MainCard1';
 
 export const SavedJobs: React.FC = () => {
@@ -10,7 +10,7 @@ export const SavedJobs: React.FC = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('http://localhost:3000/users/userjobsbookmark');
+        const response = await fetch(`${api}users/userjobsbookmark`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

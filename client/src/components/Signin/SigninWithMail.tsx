@@ -1,26 +1,7 @@
-// import email from '../LoginCom/images/mail.png'
-
-// function SignInwithMail() {
-//   function mailLogin() {
-//     window.location.href = "/withmail";
-//   }
-//   return (
-   
-// <>
-// <input type="text" placeholder="Email" className="auth-input" />
-//     <button onClick={mailLogin} className="auth-button email-button">
-//     <img src={email} alt="" />
-//     <i className="fas fa-envelope"></i> Continue with Email
-//   </button>
-//   </>
-//   );
-// }
-// export default SignInwithMail;
-
-
 import React, { useState, ChangeEvent } from 'react';
 import emailIcon from '../LoginCom/images/mail.png';
 import './error.css'
+import { api } from '../../models/model';
 const SignInwithMail: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -40,7 +21,7 @@ const SignInwithMail: React.FC = () => {
       setIsPasswordStage(true);
     } else {
       try {
-        const response = await fetch('http://localhost:3000/users/emailpass', {
+        const response = await fetch(`${api}users/emailpass`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

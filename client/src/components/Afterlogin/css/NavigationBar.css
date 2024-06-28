@@ -54,3 +54,34 @@
     border: none;
     background-color: white;
 }
+
+
+
+.popup-menu {
+    padding: 10px;
+    position: absolute;
+    height: 120px;
+    width:150px;
+    right: 10px;
+    top: 50px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    /* font-weight: bold; */
+}
+
+.popup-menu button {
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 17px;
+}
+
+.popup-menu button:hover {
+    background-color: #f0f0f0;
+}

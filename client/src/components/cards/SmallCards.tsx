@@ -1,5 +1,5 @@
 import React from "react";
-import { Job } from "../../models/model";
+import { Job, api } from "../../models/model";
 import './css/smallCard.css';
 import { Logos } from "./logos";
 
@@ -23,7 +23,7 @@ export const SmallCards: React.FC<Details> = (props: Details) => {
 
     const handleBookmarkClick = async () => {
         try {
-            const response = await fetch('http://localhost:3000/users/addbookmark', {
+            const response = await fetch(`${api}users/addbookmark`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
