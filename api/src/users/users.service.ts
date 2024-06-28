@@ -154,6 +154,17 @@ console.log(await(user.email,user.password))
                 },
             });
         }
+
+        async aboutUsers(){
+            const id = this.getuserid();
+            return id;
+        }
+        async updateusers(data:User){
+            return this.prisma.prismaClient.user.update({
+                where:{userId:data.userId},
+                data:data
+            })
+        }
         
     
 }

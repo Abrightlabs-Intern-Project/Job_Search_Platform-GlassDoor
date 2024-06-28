@@ -31,9 +31,15 @@ export interface Job {
     jobs:Job[];
   }
 export interface Users{
-  userid :number;
+    userid :string;
     username:string;
     email:string;
+    location:string;
+    age:number;
+    yearsOfExperience:number;
+    preferredJobPosition:string;
+    degree:string;
+    university:string;
 }
 
 export interface CommunityPost {

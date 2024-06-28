@@ -35,4 +35,13 @@ export class User {
     @ApiProperty({required:false})
     location?: string;
 
+    @Field()
+    @ApiProperty({required:false})
+    degree?: string;
+
+    @Field()
+    @ApiProperty({required:false})
+    university?: string;
+ 
+
 }

@@ -19,6 +19,8 @@ model User {
   yearsOfExperience   Int?     @db.Integer
   preferredJobPosition String? @db.VarChar(100)
   location             String?  @db.VarChar(100)
+  degree               String? @db.VarChar(255)
+  university           String? @db.VarChar(255)
   reviews             Review[]
   logs                Log[]
   usersDatas          UserData?

@@ -76,8 +76,17 @@ export class UsersController {
   async bookmarkjobsid(){
     return this.userservice.bookmarkjobsid();
   }
+  @Get('aboutUsers')
+  @ApiOkResponse({ type: User })
+  async aboutUsers(){
+    return this.userservice.aboutUsers();
+  }
 
-
+  @Post('updateuser')
+  @ApiOkResponse({ type: User })
+  async updateusers(@Body() data:User){
+    return this.userservice.updateusers(data);
+  }
 
   
 
