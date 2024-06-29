@@ -43,6 +43,7 @@
     border-width: 1px;
     margin-top: 40px;
     border-radius: 5px;
+    height: 834px;
 }
 
 .expbtn{
@@ -96,7 +97,7 @@
     border: rgb(235, 231, 231);
     width: 100%;
     /* background-color: red; */
-    height: 820px;
+    height: 810px;
     border-style: solid;
     border-color: rgb(218, 210, 210);
     border-width: 1px;
