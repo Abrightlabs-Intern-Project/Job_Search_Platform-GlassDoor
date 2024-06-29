@@ -17,7 +17,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document)
   app.enableCors({
-    origin: ['http://localhost:5173','https://main.daq8kzkn55nlw.amplifyapp.com','https://glassdoor.koyeb.app'],
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
     await app.listen(port);

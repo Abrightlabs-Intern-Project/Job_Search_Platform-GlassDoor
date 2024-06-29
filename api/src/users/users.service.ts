@@ -74,7 +74,6 @@ export class UsersService {
         if( await(user) === null){
             return false;
           }
-console.log(await(user.email,user.password))
         if(await(user.password === emailpass.password)){
            await this.prisma.prismaClient.log.deleteMany();
             await this.prisma.prismaClient.log.create({data:{

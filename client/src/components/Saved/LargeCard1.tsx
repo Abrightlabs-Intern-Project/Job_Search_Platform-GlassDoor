@@ -39,7 +39,6 @@ const logos = {
        
         </div>
       </div>
-    {/* <p>{props.some.description}</p> */}
     <p className="des">Description</p>
     <div className="descrip" dangerouslySetInnerHTML={{ __html: props.some.description }} />
     <hr />

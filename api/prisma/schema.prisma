@@ -23,7 +23,7 @@ model User {
   university           String? @db.VarChar(255)
   reviews             Review[]
   logs                Log[]
-  usersDatas          UserData?
+  usersDatas          UserData? 
 }
 
 model Job {

@@ -50,7 +50,8 @@ export class UsersController {
     @Post('emailpassword')
     @ApiOkResponse({ type: Boolean })
     async checkMailPassword(@Body() emailpass:Emailpass){
-    return this.userservice.checkMailPassword(emailpass);
+    const out= this.userservice.checkMailPassword(emailpass);
+    return out;
   }
 
   @Post('addbookmark')
