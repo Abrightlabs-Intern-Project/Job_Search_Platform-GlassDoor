@@ -2,16 +2,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// // for local
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
-// for hosting
+// for local
 datasource db {
   provider = "postgresql"
-  url      = @DATABASE_URL
+  url      = env("DATABASE_URL")
 }
+
+// // for hosting
+// datasource db {
+//   provider = "postgresql"
+//   url      = @DATABASE_URL
+// }
 
 model User {
   userId              String   @id  @default(uuid()) @db.VarChar(36)
