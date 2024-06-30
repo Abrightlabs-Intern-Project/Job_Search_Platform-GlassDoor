@@ -1,8 +1,9 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
 import { CompanyCard } from './CompanyCard';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import './css/maincompany.css';
 import { Company, api } from '../../models/model';
-
 
 export const MainCompany: React.FC = () => {
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -13,6 +14,7 @@ export const MainCompany: React.FC = () => {
   const [rating, setRating] = useState<string>('');
   const [companySize, setCompanySize] = useState<string>('');
   const [companyName, setCompanyName] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch(`${api}company`)
@@ -20,8 +22,12 @@ export const MainCompany: React.FC = () => {
       .then((data: Company[]) => {
         setCompanies(data);
         setFilteredCompanies(data);
+        setLoading(false);
       })
-      .catch(error => console.error('Error fetching company data:', error));
+      .catch(error => {
+        console.error('Error fetching company data:', error);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -186,9 +192,13 @@ export const MainCompany: React.FC = () => {
             </div>
           </div>
           <div className='companydiv'>
-            {filteredCompanies.length > 0 ? (
+            {loading ? (
+              Array.from({ length: 5 }).map((_, index) => (
+                <Skeleton key={index} height={100} style={{ marginBottom: '10px' }} />
+              ))
+            ) : filteredCompanies.length > 0 ? (
               filteredCompanies.map(company => (
-                <CompanyCard  companys={company} />
+                <CompanyCard key={company.companyId} companys={company} />
               ))
             ) : (
               <p>No company found</p>

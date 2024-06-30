@@ -36,13 +36,15 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 5px;
-    margin-top: -10px;
+    /* margin-top: -10px; */
     margin-left: 15px;
     /* background-color: aqua; */
 }
 .publi{
     margin-right: 20px;
+    margin-top: 0px;
 }
+
 .bookmark{
     border: none;
     background-color: white;

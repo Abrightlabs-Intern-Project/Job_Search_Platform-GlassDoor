@@ -5,15 +5,23 @@ import { FaMapMarkerAlt, FaSearch, FaTimes } from 'react-icons/fa';
 import './css/search.css';
 import { Job, api } from '../models/model';
 import SavedNav from '../components/Saved/SavedNav';
+import SearchInspirationComponent from '../components/LoginCom/Startsearch';
 
-const url = `${api}jobs`
-console.log(url)
+const url = `${api}jobs`;
+
+const LoadingSpinner: React.FC = () => (
+    <div className="loading-container">
+        <div className="spinner-container">
+            <div className="loader"></div>
+        </div>
+    </div>
+);
+
 const JobPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'foryou' | 'search' | 'saved'>('foryou');
     const [jobs, setJobs] = useState<Job[]>([]);
     const [selectedCardContent, setSelectedCardContent] = useState<Job | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    // const [error, setError] = useState<string | null>(null);
     const [error, ] = useState<string | null>(null);
 
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -28,6 +36,7 @@ const JobPage: React.FC = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
+                setLoading(true); // Set loading to true when fetching starts
                 const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error('Failed to fetch jobs');
@@ -38,9 +47,9 @@ const JobPage: React.FC = () => {
                     setSelectedCardContent(data[0]);
                 }
             } catch (error: any) {
-                // setError(error.message);
+                // Handle error if needed
             } finally {
-                setLoading(false);
+                setLoading(false); // Set loading to false when fetching completes
             }
         };
 
@@ -113,7 +122,6 @@ const JobPage: React.FC = () => {
     });
 
     const generateJobsCountText = () => {
-        // const totalJobs = jobs.length;
         const filteredJobsCount = filteredJobs.length;
         let text = `${filteredJobsCount} jobs found`;
 
@@ -129,11 +137,7 @@ const JobPage: React.FC = () => {
     };
 
     if (loading) {
-        return (
-            <div className="loading-container">
-                <p>Loading...</p>
-            </div>
-        );
+        return <LoadingSpinner />;
     }
 
     if (error) {
@@ -148,7 +152,6 @@ const JobPage: React.FC = () => {
         <>
             <NavigationBar />
 
-            {/* search bar */}
             <div className="search-bar1">
                 <div className="search-input-wrapper">
                     <FaSearch className="search-icon" />
@@ -176,7 +179,6 @@ const JobPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* tab navigation bar */}
             <div>
                 <p className='res-text'><center>Upload your CV - let employers find you</center></p>
                 <div className="tab-navbar">
@@ -206,7 +208,6 @@ const JobPage: React.FC = () => {
             {activeTab === 'search' && (
                 <>
                     <div className="filterbuttons">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.83 17a3.001 3.001 0 0 1-5.66 0H3a1 1 0 1 1 0-2h10.17a3.001 3.001 0 0 1 5.66 0H21a1 1 0 1 1 0 2h-2.17ZM16 17a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-5.17-8a3.001 3.001 0 0 1-5.66 0H3a1 1 0 0 1 0-2h2.17a3.001 3.001 0 0 1 5.66 0H21a1 1 0 1 1 0 2H10.83ZM8 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="#000"></path></svg>
                         <button className={`butn ${easyApply ? 'active' : ''}`} onClick={handleEasyApplyClick}>
                             Easy Apply Only
                         </button>
@@ -242,6 +243,8 @@ const JobPage: React.FC = () => {
                 </>
             )}
             {activeTab === 'saved' && <SavedNav />}
+            <p className='lowspace'></p>
+            <SearchInspirationComponent />
         </>
     );
 }

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { Bowls } from '../community/Bowls';
 import './css/profile.css';
 import { GrUpload, GrEdit } from "react-icons/gr";
@@ -10,6 +12,7 @@ export const Profilemain = () => {
   const [userProfile, setUserProfile] = useState<Users | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editValues, setEditValues] = useState<Users | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch(`${api}users/aboutUsers`)
@@ -17,8 +20,12 @@ export const Profilemain = () => {
       .then(data => {
         setUserProfile(data);
         setEditValues(data);
+        setLoading(false);
       })
-      .catch(error => console.error('Error fetching user data:', error));
+      .catch(error => {
+        console.error('Error fetching user data:', error);
+        setLoading(false);
+      });
   }, []);
 
   const handleEditClick = () => {
@@ -65,17 +72,15 @@ export const Profilemain = () => {
     window.location.href = "/jobs";
   };
 
-  if (!userProfile || !editValues) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       <div className="profile-main">
         <div className="profile-main-left">
-          <center><img className='profileimgs' src={profile} alt="Profile" /></center>
-          <h2 className='pronam'>{userProfile.username}</h2>
-          <p className='proloc'>{userProfile.location}</p>
+          <center>
+            {loading ? <Skeleton circle={true} height={100} width={100} /> : <img className='profileimgs' src={profile} alt="Profile" />}
+          </center>
+          <h2 className='pronam'>{loading ? <Skeleton width={150} /> : userProfile?.username}</h2>
+          <p className='proloc'>{loading ? <Skeleton width={100} /> : userProfile?.location}</p>
           <button onClick={handleProfileClick} className='probtn'>Profile</button>
           <br />
           <button onClick={handleJobClick} className='probtn'>Job Activity</button>
@@ -105,18 +110,31 @@ export const Profilemain = () => {
             <button className='editbtn' onClick={handleEditClick}><GrEdit /></button>
           </h3>
           <p>Updating your information will offer you the most relevant content and conversations.</p>
-          {!isEditing ? (
+          {!loading && !isEditing ? (
             <div className='displaymode'>
               <p className='ques'>Employment status*</p>
-              <p className='answ'>{userProfile.preferredJobPosition}</p>
+              <p className='answ'>{userProfile?.preferredJobPosition}</p>
               <p className='ques'>Full name*</p>
-              <p className='answ'>{userProfile.username}</p>
+              <p className='answ'>{userProfile?.username}</p>
               <p className='ques'>Location*</p>
-              <p className='answ'>{userProfile.location}</p>
+              <p className='answ'>{userProfile?.location}</p>
               <p className='ques'>University</p>
               <p className='answ'>None</p>
               <p className='ques'>Degree type</p>
-              <p className='answ'>{userProfile.degree}</p>
+              <p className='answ'>{userProfile?.degree}</p>
+            </div>
+          ) : loading ? (
+            <div className='loadingmode'>
+              <p className='ques'><Skeleton width={200} /></p>
+              <p className='answ'><Skeleton width={150} /></p>
+              <p className='ques'><Skeleton width={200} /></p>
+              <p className='answ'><Skeleton width={150} /></p>
+              <p className='ques'><Skeleton width={200} /></p>
+              <p className='answ'><Skeleton width={150} /></p>
+              <p className='ques'><Skeleton width={200} /></p>
+              <p className='answ'><Skeleton width={150} /></p>
+              <p className='ques'><Skeleton width={200} /></p>
+              <p className='answ'><Skeleton width={150} /></p>
             </div>
           ) : (
             <div className='editmode'>
@@ -129,11 +147,11 @@ export const Profilemain = () => {
                 </div>
               </div>
               <p className='ques'>Full name*</p>
-              <input type="text" className='inputpro' name="username" value={editValues.username} onChange={handleInputChange} />
+              <input type="text" className='inputpro' name="username" value={editValues?.username || ''} onChange={handleInputChange} />
               <p className='ques'>Location*</p>
-              <input type="text" className='inputpro' name="location" value={editValues.location} onChange={handleInputChange} />
+              <input type="text" className='inputpro' name="location" value={editValues?.location || ''} onChange={handleInputChange} />
               <p className='ques'>Degree type</p>
-              <input type="text" className='inputpro' name="degree" value={editValues.degree} onChange={handleInputChange} />
+              <input type="text" className='inputpro' name="degree" value={editValues?.degree || ''} onChange={handleInputChange} />
               <div className='buttonssav'>
                 <button className='cnbtn' onClick={handleCancelClick}>Cancel</button>
                 <button className='savbtn' onClick={handleSaveClick}>Save</button>
@@ -167,4 +185,3 @@ export const Profilemain = () => {
     </>
   );
 };
-

@@ -7,6 +7,7 @@ import { Job } from '../../models/model';
 interface MainCardProps {
   jobs: Job[];
   initialSelectedCardContent: Job | null;
+  loading?: boolean; 
 }
 
 const MainCard: React.FC<MainCardProps> = ({ jobs, initialSelectedCardContent }) => {

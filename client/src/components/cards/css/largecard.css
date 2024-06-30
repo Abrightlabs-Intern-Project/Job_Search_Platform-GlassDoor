@@ -52,12 +52,13 @@
 }
 
 .easbtn{
-    height: 45px;
+    height: 40px;
     width:130px;
     color:black;
-    background-color: rgb(7, 168, 7);
+    background-color: rgb(53, 197, 53);
     border: none;
     border-radius: 5px;
+    font-size: 17px;
     /* padding: 5px; */
 
 }

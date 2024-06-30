@@ -246,6 +246,9 @@
     border-radius: 5px;
     font-size: 17px;
  }
+ .cnbtn:hover{
+    background-color: rgb(236, 232, 232);
+ }
  .savbtn{
     width: 45%;
     border: 0.5px solid grey;
@@ -253,4 +256,8 @@
     font-size: 17px;
     background-color:rgb(178,184,194) ;
     color: white;
+ }
+ .savbtn:hover{
+    background-color:rgb(132, 133, 134) ;
+
  }

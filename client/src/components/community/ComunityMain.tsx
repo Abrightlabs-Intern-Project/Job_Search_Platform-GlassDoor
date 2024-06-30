@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { BowlList } from './BowlList';
 import './css/communitymain.css';
 import lo from './images/graduation.png';
@@ -7,10 +9,9 @@ import { PostsComp } from './PostsComp';
 import { Bowls } from './Bowls';
 import { CommunityPost, api } from '../../models/model';
 
-
-
 export const ComunityMain: React.FC = () => {
     const [posts, setPosts] = useState<CommunityPost[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -18,8 +19,10 @@ export const ComunityMain: React.FC = () => {
                 const response = await fetch(`${api}community`);
                 const data: CommunityPost[] = await response.json();
                 setPosts(data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching posts:', error);
+                setLoading(false); // Ensure loading state is set to false even on error
             }
         };
 
@@ -50,7 +53,7 @@ export const ComunityMain: React.FC = () => {
                 <div className="communitycont">
                     <div className="search-bar">
                         <FaSearch className="search-icon" />
-                        <input type="text" placeholder="Seach for Bowls or conversations" />
+                        <input type="text" placeholder="Search for Bowls or conversations" />
                     </div>
                     <div className='mncm'>
                         <div className='pstcon'>
@@ -58,9 +61,15 @@ export const ComunityMain: React.FC = () => {
                             <input className='postt' type="text" placeholder='post as "attends "' />
                         </div>
                         <div className='scrpos'>
-                            {posts.map((post) => (
-                                <PostsComp  post={post} />
-                            ))}
+                            {loading ? (
+                                Array.from({ length: 5 }).map((_, index) => (
+                                    <Skeleton key={index} height={100} style={{ marginBottom: '10px' }} />
+                                ))
+                            ) : (
+                                posts.map((post) => (
+                                    <PostsComp key={post.communityId} post={post} />
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>

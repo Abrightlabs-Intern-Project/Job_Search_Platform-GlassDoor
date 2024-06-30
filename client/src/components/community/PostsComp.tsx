@@ -8,6 +8,10 @@ interface post{
     post :CommunityPost
 }
 export const PostsComp = (props:post) => {
+    const pastDate: Date = new Date(props.post.postedAt);
+    const currentDate = new Date();
+    const diffDays = currentDate.getDate() - pastDate.getDate();
+    const days = diffDays < 0 ? diffDays + 30 : diffDays;
   return (
 <>
 
@@ -20,7 +24,7 @@ export const PostsComp = (props:post) => {
                 <p className='maintext'>{props.post.communityName}</p>
                 <p className='subtext'>{props.post.postTitle}</p>
             </div>
-            <p className='publi'>1d </p>
+            <p className='publi'>{days}d </p>
         </div>
 
     </div>
