@@ -2,7 +2,7 @@ export interface Job {
     jobId: string;
     company_id: string;
     companyName: string;
-    iconUrl?: string;
+    // iconUrl?: string;
     jobTitle: string;
     location: string;
     jobType: string;
@@ -53,6 +53,6 @@ export interface CommunityPost {
   userId:string;
 }
 
-// export const api = 'http://localhost:3000/'
+export const api = 'http://localhost:3000/'
 
-export const api = 'https://glassdoor.koyeb.app/'
+// export const api = 'https://glassdoor.koyeb.app/'

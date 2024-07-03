@@ -52,7 +52,7 @@ export const CompanyWithJobs = () => {
     const jobData = {
       jobTitle:jobTitle,
       companyName:companyName,
-      iconUrl:companyIconUrl,
+      // iconUrl:companyIconUrl,
       location: jobLocation,
       jobType:jobType,
       hasRemote:remoteAvailability,

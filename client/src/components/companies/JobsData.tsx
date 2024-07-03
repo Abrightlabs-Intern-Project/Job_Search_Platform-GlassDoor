@@ -6,7 +6,7 @@ import { api } from '../../models/model';
 export const JobsData: React.FC = () => {
   const [jobTitle, setJobTitle] = useState<string>('');
   const [companyName, setCompanyName] = useState<string>('');
-  const [companyIconUrl, setCompanyIconUrl] = useState<string>('');
+  // const [companyIconUrl, setCompanyIconUrl] = useState<string>('');
   const [location, setLocation] = useState<string>('');
   const [jobType, setJobType] = useState<string>('');
   const [remoteAvailability, setRemoteAvailability] = useState<boolean>(true);
@@ -24,7 +24,7 @@ export const JobsData: React.FC = () => {
     const jobData = {
       jobTitle,
       companyName,
-      iconUrl: companyIconUrl,
+      // iconUrl: companyIconUrl,
       location,
       jobType,
       hasRemote: remoteAvailability,
@@ -52,7 +52,7 @@ export const JobsData: React.FC = () => {
         alert('Job post added successfully!');
         setJobTitle('');
         setCompanyName('');
-        setCompanyIconUrl('');
+        // setCompanyIconUrl('');
         setLocation('');
         setJobType('');
         setRemoteAvailability(true);
@@ -100,7 +100,7 @@ export const JobsData: React.FC = () => {
               required
             />
           </div>
-          <div className='datainputadd'>
+          {/* <div className='datainputadd'>
             <p className='labelinput'>Company Icon Url</p>
             <input
               className='textinputs'
@@ -108,8 +108,8 @@ export const JobsData: React.FC = () => {
               placeholder='Eg: abrightlab.com/icon/sghiueugf.jpg'
               value={companyIconUrl}
               onChange={(e) => setCompanyIconUrl(e.target.value)}
-            />
-          </div>
+            /> 
+          </div> */}
           <div className='datainputadd'>
             <p className='labelinput'>Location</p>
             <input

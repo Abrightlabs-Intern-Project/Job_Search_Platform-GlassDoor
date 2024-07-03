@@ -93,7 +93,6 @@ export class CompanyService {
                     data: {
                       companyId: id,
                       companyName: company.companyName,
-                      iconUrl: company.iconUrl,
                       jobTitle: company.jobTitle,
                       location: company.location,
                       jobType: company.jobType,
@@ -129,7 +128,6 @@ export class CompanyService {
                     data: {
                       companyId: newCompany.companyId,
                       companyName: company.companyName,
-                      iconUrl: company.iconUrl,
                       jobTitle: company.jobTitle,
                       location: company.location,
                       jobType: company.jobType,

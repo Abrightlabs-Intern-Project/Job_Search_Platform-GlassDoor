@@ -9,7 +9,7 @@ export const SmallCards1 = (props:details) => {
 
 
   const logos = {
-    logo_url:props.content.iconUrl,
+    logo_url:props.content.company.iconUrl,
     company_name:props.content.companyName,
     website:props.content.applicationUrl,
     rating:props.content.company.rating

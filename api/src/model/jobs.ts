@@ -16,10 +16,6 @@ export class Job {
     companyName: string;
 
     @Field()
-    @ApiProperty({required:false})
-    iconUrl?: string;
-
-    @Field()
     @ApiProperty()
     jobTitle: string;
 

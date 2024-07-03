@@ -17,7 +17,7 @@ export const SmallCards: React.FC<Details> = (props: Details) => {
     const days = diffDays < 0 ? diffDays + 30 : diffDays;
 
     const logos = {
-        logo_url: props.content.iconUrl,
+        logo_url: props.content.company.iconUrl,
         company_name: props.content.companyName,
         website: props.content.applicationUrl,
         rating: props.content.company.rating

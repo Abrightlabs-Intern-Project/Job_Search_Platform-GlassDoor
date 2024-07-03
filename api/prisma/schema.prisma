@@ -34,7 +34,6 @@ model Job {
   jobId                 String   @id  @default(uuid()) @db.VarChar(36)
   companyId             String   @db.VarChar(36)
   companyName           String   @db.VarChar(100)
-  iconUrl             String?    @db.VarChar(255)
   jobTitle              String   @db.VarChar(255)
   location              String   @db.VarChar(100)
   jobType               String   @db.VarChar(50)
@@ -47,7 +46,7 @@ model Job {
   clearanceRequired     Boolean  @db.Boolean
   salaryCurrency        String?  @db.VarChar(10)
   jobVacancies          Int?     @db.Integer
-  company               Company  @relation(fields: [companyId], references: [companyId])
+  company               Company  @relation(fields: [companyId], references: [companyId], onDelete:Cascade )
   reviews               Review[]
 }
 
@@ -62,7 +61,7 @@ model Company {
   companySize         Int      @db.Integer
   industry            String   @db.VarChar(50)
   description         String?  @db.VarChar(1000)
-  jobs                Job[]
+  jobs                Job[]  
   reviews             Review[]
 }
 

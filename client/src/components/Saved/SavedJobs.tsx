@@ -232,7 +232,7 @@ export const SavedJobs: React.FC = () => {
   };
 
   const logos = selectedCardContent ? {
-    logo_url: selectedCardContent.iconUrl,
+    logo_url: selectedCardContent.company.iconUrl,
     company_name: selectedCardContent.companyName,
     website: selectedCardContent.applicationUrl,
     rating: selectedCardContent.company.rating,
