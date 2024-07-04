@@ -6,13 +6,15 @@ import { uuid } from 'uuidv4';
 import { Userexist } from './dto/input/userexist.input';
 import { Emailpass } from './dto/input/emailpass.input';
 import { JobId } from './dto/input/jobid.input';
+import { S3Service } from 'src/company/upload.service';
 
 
 
 @Injectable()
 export class UsersService {
 
-    constructor(private prisma:PrismaService){}
+    constructor(private prisma:PrismaService,
+        private readonly s3Service: S3Service){}
 
     async createUser(createuserdata:CreateUserInput): Promise<User>{
         const newuser :User = {
@@ -166,6 +168,33 @@ export class UsersService {
                 data:data
             })
         }
-        
-    
+        async updateResume(resumeurl:string): Promise<User>{
+            const id = this.getuserid()
+            const userid = (await id).userId
+            if ((await id).resume) {
+                const urlParts = (await id).resume.split('/');
+                const keyIndex = urlParts.findIndex(part => part === 'profile');
+                const key = urlParts.slice(keyIndex).join('/');
+                await this.s3Service.deleteFile(key);
+              }
+            return await this.prisma.prismaClient.user.update({
+                where:{userId:userid},
+                data:{resume:resumeurl}
+            })
+        }
+
+        async updateImage(imageurl:string) : Promise<User>{
+            const id = this.getuserid()
+            const userid = (await id).userId
+            if ((await id).image) {
+                const urlParts = (await id).image.split('/');
+                const keyIndex = urlParts.findIndex(part => part === 'profile');
+                const key = urlParts.slice(keyIndex).join('/');
+                await this.s3Service.deleteFile(key);
+              }
+            return await this.prisma.prismaClient.user.update({
+                where:{userId:userid},
+                data:{image:imageurl}
+            })
+        }
 }

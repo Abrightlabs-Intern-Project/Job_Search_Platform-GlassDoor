@@ -8,12 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// // for hosting
-// datasource db {
-//   provider = "postgresql"
-//   url      = @DATABASE_URL
-// }
-
 model User {
   userId              String   @id  @default(uuid()) @db.VarChar(36)
   email               String   @unique @db.VarChar(255)
@@ -25,6 +19,8 @@ model User {
   location             String?  @db.VarChar(100)
   degree               String? @db.VarChar(255)
   university           String? @db.VarChar(255)
+  resume               String? @db.VarChar(255)
+  image                String? @db.VarChar(255)
   reviews             Review[]
   logs                Log[]
   usersDatas          UserData? 

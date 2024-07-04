@@ -39,6 +39,8 @@ export interface Users{
     preferredJobPosition:string;
     degree:string;
     university:string;
+    resume:string;
+    image:string;
 }
 
 export interface CommunityPost {

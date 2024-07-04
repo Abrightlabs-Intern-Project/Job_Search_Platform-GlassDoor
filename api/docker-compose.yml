@@ -5,7 +5,7 @@ services:
     ports:
       - '3000:3000'
     environment:
-      DATABASE_URL: postgresql://postgres:saransathish@jobsdb.cvkw0mg4a8as.eu-north-1.rds.amazonaws.com:5432/JobsSearch
+      DATABASE_URL: postgresql://postgres:saransathish@jobsdb.cvkw0mg4a8as.eu-north-1.rds.amazonaws.com:5432/glassdoor
     depends_on:
       - postgres
 
@@ -14,7 +14,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: saransathish
-      POSTGRES_DB: JobsSearch
+      POSTGRES_DB: glassdoor
     ports:
       - '5432:5432'
     volumes:

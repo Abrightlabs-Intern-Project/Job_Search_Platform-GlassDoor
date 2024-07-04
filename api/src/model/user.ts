@@ -43,5 +43,12 @@ export class User {
     @ApiProperty({required:false})
     university?: string;
  
+    @Field()
+    @ApiProperty({required:false})
+    resume?: string;
+
+    @Field()
+    @ApiProperty({required:false})
+    image?: string;
 
 }

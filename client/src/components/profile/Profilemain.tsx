@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Bowls } from '../community/Bowls';
@@ -7,12 +7,16 @@ import { GrUpload, GrEdit } from "react-icons/gr";
 import { SlLock } from "react-icons/sl";
 import profile from './images/profileimage.jpg';
 import { Users, api } from '../../models/model';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Profilemain = () => {
   const [userProfile, setUserProfile] = useState<Users | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editValues, setEditValues] = useState<Users | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const profileImageInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     fetch(`${api}users/aboutUsers`)
@@ -50,6 +54,7 @@ export const Profilemain = () => {
         .then(data => {
           setUserProfile(data);
           setIsEditing(false);
+          toast.success('Profile updated successfully!');
         })
         .catch(error => console.error('Error updating user data:', error));
     }
@@ -72,12 +77,82 @@ export const Profilemain = () => {
     window.location.href = "/jobs";
   };
 
+  const handleUploadClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleProfileImageClick = () => {
+    if (profileImageInputRef.current) {
+      profileImageInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      fetch(`${api}users/updateresume`, {
+        method: 'POST',
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(data => {
+          setUserProfile(prevState => prevState ? { ...prevState, resume: data.resume } : prevState);
+          toast.success('updated successfully!');
+        })
+        .catch(error => {
+          console.error('Error uploading file:', error);
+          toast.error('Error uploading resume.');
+        });
+    }
+  };
+
+  const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      fetch(`${api}users/updateimage`, {
+        method: 'POST',
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(data => {
+          setUserProfile(prevState => prevState ? { ...prevState, image: data.image } : prevState);
+          toast.success('Profile updated successfully!');
+        })
+        .catch(error => {
+          console.error('Error uploading profile image:', error);
+          toast.error('Error uploading profile image.');
+        });
+    }
+  };
+
   return (
     <>
+      <ToastContainer />
       <div className="profile-main">
         <div className="profile-main-left">
           <center>
-            {loading ? <Skeleton circle={true} height={100} width={100} /> : <img className='profileimgs' src={profile} alt="Profile" />}
+            <div className="profile-image-container" onClick={handleProfileImageClick}>
+              {loading ? (
+                <Skeleton circle={true} height={100} width={100} />
+              ) : (
+                <img
+                  className='profileimgs'
+                  src={userProfile?.image || profile}
+                  alt="Profile"
+                />
+              )}
+              <div className="edit-icon">
+                <GrEdit />
+              </div>
+            </div>
           </center>
           <h2 className='pronam'>{loading ? <Skeleton width={150} /> : userProfile?.username}</h2>
           <p className='proloc'>{loading ? <Skeleton width={100} /> : userProfile?.location}</p>
@@ -162,13 +237,31 @@ export const Profilemain = () => {
           <div className='widthlow'>
             <h2>CV</h2>
             <p>After you upload a CV, it will be used to pre-fill job applications that you submit via Easy Apply. You can also make your CV visible or not visible to employers that are currently hiring. See our <a href="https://hrtechprivacy.com/brands/glassdoor#privacypolicy"><span className='prigre'>Privacy Policy</span></a> for more info.</p>
-            <div className='uploadcv'>
+            {userProfile?.resume && (
+              <a href={userProfile.resume} target="_blank" rel="noopener noreferrer">
+              <div className='myresume'>
+                View my Resume
+              </div></a>
+            )}
+            <div className='uploadcv' onClick={handleUploadClick}>
               <GrUpload className='uplo' />
               <div className='uplaofil'>
                 <h3>Upload CV</h3>
                 <p className='cvtxt'>Use a pdf, docx, doc, rtf or txt</p>
               </div>
             </div>
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+              onChange={handleFileChange}
+            />
+            <input
+              type="file"
+              ref={profileImageInputRef}
+              style={{ display: 'none' }}
+              onChange={handleProfileImageChange}
+            />
           </div>
         </div>
         <div className="profile-main-right">

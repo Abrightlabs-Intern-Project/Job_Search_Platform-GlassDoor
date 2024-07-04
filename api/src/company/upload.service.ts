@@ -18,7 +18,7 @@ export class S3Service {
   }
 
   async uploadFile(file: Express.Multer.File) {
-    const key = `${file.originalname}`;
+    const key = `profile/${file.originalname}`;
     
     try {
       await this.s3
@@ -61,5 +61,18 @@ export class S3Service {
 
   getFileUrl(key): string {
     return `https://${this.bucketName}.s3.amazonaws.com/${key}`;
+  }
+
+  async deleteFile(key: string): Promise<void> {
+    try {
+      await this.s3
+        .deleteObject({
+          Bucket: this.bucketName,
+          Key: key,
+        })
+        .promise();
+    } catch (error) {
+      throw new InternalServerErrorException('Error deleting file from S3');
+    }
   }
 }
