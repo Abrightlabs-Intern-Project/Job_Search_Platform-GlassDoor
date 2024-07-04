@@ -6,18 +6,16 @@ import { api } from '../../models/model';
 export const CompanyWithJobs = () => {
   const [showJobs, setShowJobs] = useState(false);
 
-  // Company state
   const [companyName, setCompanyName] = useState<string>('');
   const [websiteUrl, setWebsiteUrl] = useState<string>('');
   const [linkedUrl, setLinkedUrl] = useState<string>('');
   const [rating, setRating] = useState<number | string>('');
-  const [companyIconUrl, setCompanyIconUrl] = useState<string>('');
+  const [companyIcon, setCompanyIcon] = useState<File | null>(null);
   const [location, setLocation] = useState<string>('');
   const [companySize, setCompanySize] = useState<number | string>('');
   const [industry, setIndustry] = useState<string>('');
   const [companyDescription, setCompanyDescription] = useState<string>('');
 
-  // Job state
   const [jobTitle, setJobTitle] = useState<string>('');
   const [jobLocation, setJobLocation] = useState<string>('');
   const [jobType, setJobType] = useState<string>('');
@@ -30,6 +28,12 @@ export const CompanyWithJobs = () => {
   const [jobVacancies, setJobVacancies] = useState<number | string>('');
   const [jobDescription, setJobDescription] = useState<string>('');
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setCompanyIcon(e.target.files[0]);
+    }
+  };
+
   const handleNextClick = () => {
     setShowJobs(true);
   };
@@ -37,48 +41,35 @@ export const CompanyWithJobs = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const companyData = {
-      companyName:companyName,
-      companyWebsiteUrl:websiteUrl,
-      companyLinkedinUrl:linkedUrl,
-      rating: typeof rating === 'string' ? parseFloat(rating) : rating,
-      iconUrl:companyIconUrl,
-      location:location,
-      companySize: typeof companySize === 'string' ? parseInt(companySize) : companySize,
-      industry:industry,
-      description: companyDescription,
-    };
+    const formData = new FormData();
+    formData.append('companyName', companyName);
+    formData.append('companyWebsiteUrl', websiteUrl);
+    formData.append('companyLinkedinUrl', linkedUrl);
+    formData.append('rating', typeof rating === 'string' ? parseFloat(rating).toString() : rating.toString());
+    if (companyIcon) {
+      formData.append('icon', companyIcon);
+    }
+    formData.append('location', location);
+    formData.append('companySize', typeof companySize === 'string' ? parseInt(companySize).toString() : companySize.toString());
+    formData.append('industry', industry);
+    formData.append('description', companyDescription);
 
-    const jobData = {
-      jobTitle:jobTitle,
-      companyName:companyName,
-      // iconUrl:companyIconUrl,
-      location: jobLocation,
-      jobType:jobType,
-      hasRemote:remoteAvailability,
-      easyApply:easyApply,
-      published:new Date(),
-      applicationUrl:applicationUrl,
-      language:language,
-      clearanceRequired:clearanceRequired,
-      salaryCurrency:salaryCurrency,
-      jobVacancies: typeof jobVacancies === 'string' ? parseInt(jobVacancies) : jobVacancies,
-      description: jobDescription,
-    };
-
-    const combinedData = {
-      company: companyData,
-      job: jobData,
-    };
-    console.log(combinedData);
+    formData.append('jobTitle', jobTitle);
+    formData.append('jobLocation', jobLocation);
+    formData.append('jobType', jobType);
+    formData.append('remoteAvailability', remoteAvailability ? 'true' : 'false');
+    formData.append('easyApply', easyApply ? 'true' : 'false');
+    formData.append('applicationUrl', applicationUrl);
+    formData.append('language', language);
+    formData.append('clearanceRequired', clearanceRequired ? 'true' : 'false');
+    formData.append('salaryCurrency', salaryCurrency);
+    formData.append('jobVacancies', typeof jobVacancies === 'string' ? parseInt(jobVacancies).toString() : jobVacancies.toString());
+    formData.append('jobDescription', jobDescription);
 
     try {
       const response = await fetch(`${api}company/companywithjobs`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(combinedData),
+        body: formData,
       });
 
       if (response.ok) {
@@ -88,7 +79,7 @@ export const CompanyWithJobs = () => {
         setWebsiteUrl('');
         setLinkedUrl('');
         setRating('');
-        setCompanyIconUrl('');
+        setCompanyIcon(null);
         setLocation('');
         setCompanySize('');
         setIndustry('');
@@ -163,13 +154,11 @@ export const CompanyWithJobs = () => {
                 />
               </div>
               <div className='datainputadd'>
-                <p className='labelinput'>Company Icon Url</p>
+                <p className='labelinput'>Company Icon</p>
                 <input
                   className='textinputs'
-                  type="text"
-                  placeholder='Eg: abrightlab.com/icon/sghiueugf.jpg'
-                  value={companyIconUrl}
-                  onChange={(e) => setCompanyIconUrl(e.target.value)}
+                  type="file"
+                  onChange={handleFileChange}
                 />
               </div>
               <div className='datainputadd'>

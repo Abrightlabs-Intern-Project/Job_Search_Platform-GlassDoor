@@ -16,9 +16,10 @@ export class CommunityController {
         return this.communityservice.getallcommunityPost();
     }
 
-    // @Get()
-    // dataadding(){
-    //     return this.communityservice.addingdata();
-    // }
+    @Get('addcommunity')
+    @ApiOkResponse({type:String})
+    dataadding(){
+        return this.communityservice.addingdata();
+    }
     
 }

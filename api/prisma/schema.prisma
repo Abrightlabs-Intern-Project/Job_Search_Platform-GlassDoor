@@ -39,7 +39,7 @@ model Job {
   jobType               String   @db.VarChar(50)
   hasRemote             Boolean? @db.Boolean
   easyApply             Boolean?  @db.Boolean
-  published             DateTime @db.Date
+  published             DateTime @db.Date @default(now())
   description           String   @db.Text
   applicationUrl        String   @db.VarChar(255)
   language              String   @db.VarChar(50)

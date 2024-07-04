@@ -1,20 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { GetPreferredCompanyLocation } from './dto/args/companylocation.args';
-// import { Company } from '@prisma/client';
 import { GetPreferredCompany } from './dto/args/companyname.args';
 import { Company } from 'src/model/company';
 import { Job } from 'src/model/jobs';
 import { companywithjobscombined } from './dto/args/createcompanywithjobs.args';
-// import { Company } from 'src/model/company';
+import { S3Service } from './upload.service';
 
 @Injectable()
 export class CompanyService {
 
-    constructor(private prisma:PrismaService){}
+    constructor(private prisma:PrismaService,
+        private readonly s3Service: S3Service
+
+    ){}
 
     async createNewCompany(newcompanydata:Company) {
-        return this.prisma.prismaClient.company.create({data:newcompanydata})
+        return this.prisma.prismaClient.company.create({data:{
+            ...newcompanydata,
+            rating:Number(newcompanydata.rating),
+            companySize:Number(newcompanydata.companySize)
+        }})
 
     }
 
@@ -53,22 +59,24 @@ export class CompanyService {
     }
     else{
         return this.prisma.prismaClient.job.create({data:{
-            companyId:'626e3f73-7620-48f8-8276-6a08c20c175c',
+            companyId:'ccbf4358-f582-4644-a2c0-6f15baadbf80',
             ...jobspost,
         }})
     }
 }
 
-    async createnewcompanyjobpost(newcompanyjobspost:companywithjobscombined){
+    async createnewcompanyjobpost(newcompanyjobspost){
+        console.log(newcompanyjobspost)
         const newCompany = await this.prisma.prismaClient.company.create({
             data: {
-                ...newcompanyjobspost.company
+                ...newcompanyjobspost.company,
             }
         });
 
         const job = await this.prisma.prismaClient.job.create({
             data: {
               companyId: newCompany.companyId,
+
               ...newcompanyjobspost.job
             },
           });
@@ -76,17 +84,16 @@ export class CompanyService {
           return newCompany
     } 
 
+
     
 
     async createcompany(){
         const fs = require('fs');
-        const companyData = JSON.parse(fs.readFileSync('finaljobs22.json', 'utf8'));
+        const companyData = JSON.parse(fs.readFileSync('day4_7.json', 'utf8'));
         for (const company of companyData) {
             const comp = this.getcompany(company.companyName)
             
             if( (await comp)){
-                // console.log(await(comp));
-                // console.log(await(comp));
                 const id = await((await comp).companyId);
                 console.log('if');
                 const job = await this.prisma.prismaClient.job.create({
@@ -110,13 +117,18 @@ export class CompanyService {
             }
             else{
                 console.log('else');
+                const name = company.iconUrl;
+                const imageName = name.substring(name.lastIndexOf('/') + 1);
+                console.log(imageName);
+                const url = await this.s3Service.uploadFileByUrl(company.iconUrl,imageName)
+                const urlpath = await this.s3Service.getFileUrl(url)
                 const newCompany = await this.prisma.prismaClient.company.create({
                     data: {
                         companyName: company.companyName,
                         companyWebsiteUrl:company.companyWebsiteUrl,
                         companyLinkedinUrl:company.companyLinkedinUrl,
                         rating:company.companyRating,
-                        iconUrl:company.iconUrl,
+                        iconUrl:urlpath,
                         location:company.companyLocation,
                         companySize:company.companySize,
                         industry:company.industry,
@@ -145,7 +157,7 @@ export class CompanyService {
             }
 
         }
-        return "sucess"
+        return "success"
     }
 
     async getCompanyByLocation(getpreferredcompanylocation:GetPreferredCompanyLocation):Promise<Company[]> {

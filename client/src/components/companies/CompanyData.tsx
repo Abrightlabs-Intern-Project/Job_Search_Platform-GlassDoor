@@ -8,50 +8,51 @@ export const CompanyData: React.FC = () => {
   const [websiteUrl, setWebsiteUrl] = useState<string>('');
   const [linkedUrl, setLinkedUrl] = useState<string>('');
   const [rating, setRating] = useState<number | string>('');
-  const [companyIconUrl, setCompanyIconUrl] = useState<string>('');
+  const [companyIcon, setCompanyIcon] = useState<File | null>(null);
   const [location, setLocation] = useState<string>('');
   const [companySize, setCompanySize] = useState<number | string>('');
   const [industry, setIndustry] = useState<string>('');
   const [description, setDescription] = useState<string>('');
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setCompanyIcon(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
-    const companyData = {
-      companyName:companyName,
-      companyWebsiteUrl:websiteUrl,
-      companyLinkedinUrl:linkedUrl,
-      rating: typeof rating === 'string' ? parseFloat(rating) : rating,
-      iconUrl:companyIconUrl,
-      location:location,
-      companySize: typeof companySize === 'string' ? parseInt(companySize) : companySize,
-      industry:industry,
-      description:description
-    };
-    console.log(companyData)
+    const formData = new FormData();
+    formData.append('companyName', companyName);
+    formData.append('companyWebsiteUrl', websiteUrl);
+    formData.append('companyLinkedinUrl', linkedUrl);
+    formData.append('rating', rating.toString());
+    if (companyIcon) {
+      formData.append('icon', companyIcon);
+    }
+    formData.append('location', location);
+    formData.append('companySize', companySize.toString());
+    formData.append('industry', industry);
+    formData.append('description', description);
 
     try {
       const response = await fetch(`${api}company/createnewcompany`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(companyData)
+        body: formData
       });
 
       if (response.ok) {
         alert('Company added successfully!');
-        // Clear the form fields
         setCompanyName('');
         setWebsiteUrl('');
         setLinkedUrl('');
         setRating('');
-        setCompanyIconUrl('');
+        setCompanyIcon(null);
         setLocation('');
         setCompanySize('');
         setIndustry('');
         setDescription('');
-        // Close the form or perform any other necessary actions
       } else {
         alert('Failed to add company. Please try again.');
       }
@@ -105,17 +106,15 @@ export const CompanyData: React.FC = () => {
               type="number"
               placeholder='Eg: 3.5'
               value={rating}
-              onChange={(e) => setRating(e.target.value)}
+              onChange={(e) => setRating(parseFloat(e.target.value))}
             />
           </div>
           <div className='datainputadd'>
-            <p className='labelinput'>Company Icon Url</p>
+            <p className='labelinput'>Company Icon</p>
             <input
               className='textinputs'
-              type="text"
-              placeholder='Eg: abrightlab.com/icon/sghiueugf.jpg'
-              value={companyIconUrl}
-              onChange={(e) => setCompanyIconUrl(e.target.value)}
+              type="file"
+              onChange={handleFileChange}
             />
           </div>
           <div className='datainputadd'>
@@ -136,7 +135,7 @@ export const CompanyData: React.FC = () => {
               type="number"
               placeholder='Eg: 1000'
               value={companySize}
-              onChange={(e) => setCompanySize(e.target.value)}
+              onChange={(e) => setCompanySize(parseInt(e.target.value))}
             />
           </div>
           <div className='datainputadd'>

@@ -8,6 +8,8 @@ CREATE TABLE "User" (
     "yearsOfExperience" INTEGER,
     "preferredJobPosition" VARCHAR(100),
     "location" VARCHAR(100),
+    "degree" VARCHAR(255),
+    "university" VARCHAR(255),
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("userId")
 );
@@ -17,13 +19,12 @@ CREATE TABLE "Job" (
     "jobId" VARCHAR(36) NOT NULL,
     "companyId" VARCHAR(36) NOT NULL,
     "companyName" VARCHAR(100) NOT NULL,
-    "iconUrl" VARCHAR(255),
     "jobTitle" VARCHAR(255) NOT NULL,
     "location" VARCHAR(100) NOT NULL,
     "jobType" VARCHAR(50) NOT NULL,
     "hasRemote" BOOLEAN,
     "easyApply" BOOLEAN,
-    "published" DATE NOT NULL,
+    "published" DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "description" TEXT NOT NULL,
     "applicationUrl" VARCHAR(255) NOT NULL,
     "language" VARCHAR(50) NOT NULL,
@@ -53,6 +54,8 @@ CREATE TABLE "Company" (
 -- CreateTable
 CREATE TABLE "CommunityPost" (
     "communityId" VARCHAR(36) NOT NULL,
+    "communityIcon" VARCHAR(256) NOT NULL,
+    "communityName" VARCHAR(100) NOT NULL,
     "postTitle" VARCHAR(100) NOT NULL,
     "postContent" TEXT NOT NULL,
     "imageUrl" VARCHAR(255),
@@ -102,10 +105,7 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 CREATE UNIQUE INDEX "UserData_userId_key" ON "UserData"("userId");
 
 -- AddForeignKey
-ALTER TABLE "Job" ADD CONSTRAINT "Job_companyId_fkey" FOREIGN KEY ("companyId") REFERENCES "Company"("companyId") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "CommunityPost" ADD CONSTRAINT "CommunityPost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Job" ADD CONSTRAINT "Job_companyId_fkey" FOREIGN KEY ("companyId") REFERENCES "Company"("companyId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Review" ADD CONSTRAINT "Review_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;

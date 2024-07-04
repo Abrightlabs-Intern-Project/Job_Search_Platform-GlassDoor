@@ -51,17 +51,19 @@ export class UsersService {
     }
 
     async userExists(userexist:Userexist):Promise<boolean | null>{
-        await this.prisma.prismaClient.log.deleteMany();
-        await this.prisma.prismaClient.log.create({data:{
-            isLogin:true,
-            userEmail:userexist.email
-        }})
+        
         const user = this.prisma.prismaClient.user.findUnique({where:{
             email:userexist.email,
         }})
         if( await(user) === null){
             return false;
           }
+
+        await this.prisma.prismaClient.log.deleteMany();
+        await this.prisma.prismaClient.log.create({data:{
+            isLogin:true,
+            userEmail:userexist.email
+        }})
           
           return true;
     }
