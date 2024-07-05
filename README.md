@@ -126,12 +126,12 @@ This project is built using modern web development technologies to ensure a robu
 Create a `.env` file in the client directory and add the following variables:
 
 ```env
-REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+VITE_APP_FIREBASE_API_KEY=your_firebase_api_key
+VITE_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
+VITE_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+VITE_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+VITE_APP_FIREBASE_APP_ID=your_firebase_app_id
 ```
 
 
@@ -147,19 +147,19 @@ AWS_S3_BUCKET_NAME=your_aws_s3_bucket_name
 AWS_S3_REGION=your_aws_s3_region
 ```
 ## api-documentation
-Swagger is used for API documentation. The Swagger UI can be accessed for detailed API information.
-https://glassdoor.koyeb.app/api
+Swagger is used for API documentation. The Swagger UI can be accessed for detailed API information [here](https://glassdoor.koyeb.app/api).
+
 
 ![Swagger UI](screenshots/swagger-ui.png)
 
 
 ## deployment
 Frontend
-The frontend is deployed on AWS Amplify. You can access the deployed frontend here.
-https://main.daq8kzkn55nlw.amplifyapp.com
+The frontend is deployed on AWS Amplify. You can access the deployed frontend [here](https://main.daq8kzkn55nlw.amplifyapp.com).
+
 
 
 Backend
-The backend is deployed on Koyeb. You can access the deployed backend here.
-https://glassdoor.koyeb.app
+The backend is deployed on Koyeb. You can access the deployed backend [here](https://glassdoor.koyeb.app).
+
 
