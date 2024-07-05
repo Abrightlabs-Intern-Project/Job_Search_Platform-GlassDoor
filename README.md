@@ -86,7 +86,7 @@ This project is built using modern web development technologies to ensure a robu
 1. Clone the repository:
     ```bash
     git clone https://github.com/yourusername/job-search-platform.git
-    cd job-search-platform/frontend
+    cd job-search-platform/client
     ```
 
 2. Install dependencies:
@@ -98,14 +98,16 @@ This project is built using modern web development technologies to ensure a robu
 
 4. Start the development server:
     ```bash
-    npm start
+    npm run build
+    npm run dev
     ```
 
 ### Backend
 
 1. Navigate to the backend directory:
     ```bash
-    cd ../backend
+    cd ..
+    cd api
     ```
 
 2. Install dependencies:
@@ -117,24 +119,26 @@ This project is built using modern web development technologies to ensure a robu
 
 4. Run Prisma migrations:
     ```bash
+    npx prisma migrate dev
     npx prisma migrate deploy
     ```
 
 5. Start the NestJS server:
     ```bash
-    npm run start:dev
+    npm run build
+    npm run start
     ```
 
 ## Usage
 
-- Visit `http://localhost:3000` to access the frontend.
+- Visit `http://localhost:5173/` to access the frontend.
 - API documentation is available at `http://localhost:3000/api`.
 
 ## Environment Variables
 
 ### Frontend
 
-Create a `.env` file in the frontend directory and add the following variables:
+Create a `.env` file in the client directory and add the following variables:
 
 ```env
 REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
@@ -143,3 +147,17 @@ REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
 REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
 REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+```
+
+
+### backend
+
+Create a `.env` file in the api directory and add the following variables:
+
+```env
+DATABASE_URL=postgresql://username:password@host:port/database
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+AWS_S3_BUCKET_NAME=your_aws_s3_bucket_name
+AWS_S3_REGION=your_aws_s3_region
+```
