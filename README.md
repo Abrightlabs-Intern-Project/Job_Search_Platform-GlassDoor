@@ -146,11 +146,11 @@ AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
 AWS_S3_BUCKET_NAME=your_aws_s3_bucket_name
 AWS_S3_REGION=your_aws_s3_region
 ```
-##api-documentation
+## api-documentation
 
 ![Swagger UI](screenshots/swagger-ui.png)
 
-##deployment
+## deployment
 FrontEnd in AWS Aplify:
 
 https://main.daq8kzkn55nlw.amplifyapp.com
