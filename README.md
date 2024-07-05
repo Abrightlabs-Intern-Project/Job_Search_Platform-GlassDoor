@@ -147,15 +147,19 @@ AWS_S3_BUCKET_NAME=your_aws_s3_bucket_name
 AWS_S3_REGION=your_aws_s3_region
 ```
 ## api-documentation
+Swagger is used for API documentation. The Swagger UI can be accessed for detailed API information.
+https://glassdoor.koyeb.app/api
 
 ![Swagger UI](screenshots/swagger-ui.png)
 
-## deployment
-FrontEnd in AWS Aplify:
 
+## deployment
+Frontend
+The frontend is deployed on AWS Amplify. You can access the deployed frontend here.
 https://main.daq8kzkn55nlw.amplifyapp.com
 
 
-Api in Koyeb:
-
+Backend
+The backend is deployed on Koyeb. You can access the deployed backend here.
 https://glassdoor.koyeb.app
+
