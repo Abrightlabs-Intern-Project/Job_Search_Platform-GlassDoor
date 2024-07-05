@@ -24,8 +24,14 @@ Welcome to the Job Search Platform, a comprehensive job search solution inspired
    - [Backend](#backend)
 6. [Usage](#usage)
 7. [Environment Variables](#environment-variables)
-8. [Contributing](#contributing)
-9. [License](#license)
+   - [Frontend](#frontend)
+   - [Backend](#backend)
+8. [Prisma Setup](#prisma-setup)
+9. [GraphQL Details](#graphql-details)
+10. [API Documentation](#api-documentation)
+11. [Deployment](#deployment)
+12. [Contributing](#contributing)
+13. [License](#license)
 
 ## Overview
 
@@ -62,11 +68,16 @@ This project is built using modern web development technologies to ensure a robu
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
+![Homepage](screenshots/homepage.png)
+![Job Search](screenshots/job-search.png)
 
-![Screenshot 3](screenshots/screenshot3.png)
-![Screenshot 4](screenshots/screenshot4.png)
+![Company Reviews](screenshots/company-reviews.png)
+![Job Application](screenshots/job-application.png)
+
+![Prisma Schema](screenshots/prisma-schema.png)
+![GraphQL Playground](screenshots/graphql-playground.png)
+
+![Swagger UI](screenshots/swagger-ui.png)
 
 ## Installation
 
@@ -83,7 +94,9 @@ This project is built using modern web development technologies to ensure a robu
     npm install
     ```
 
-3. Start the development server:
+3. Set up environment variables (see [Environment Variables](#environment-variables)).
+
+4. Start the development server:
     ```bash
     npm start
     ```
@@ -119,18 +132,14 @@ This project is built using modern web development technologies to ensure a robu
 
 ## Environment Variables
 
-Create a `.env` file in the backend directory and add the following variables:
+### Frontend
+
+Create a `.env` file in the frontend directory and add the following variables:
 
 ```env
-DATABASE_URL=postgresql://username:password@host:port/database
-FIREBASE_API_KEY=your_firebase_api_key
-FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-FIREBASE_PROJECT_ID=your_firebase_project_id
-FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
-FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-FIREBASE_APP_ID=your_firebase_app_id
-AWS_ACCESS_KEY_ID=your_aws_access_key_id
-AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
-AWS_S3_BUCKET_NAME=your_aws_s3_bucket_name
-AWS_S3_REGION=your_aws_s3_region
-
+REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
