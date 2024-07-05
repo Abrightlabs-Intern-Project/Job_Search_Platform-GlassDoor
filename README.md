@@ -58,10 +58,9 @@ This project is built using modern web development technologies to ensure a robu
 ![Job Search](screenshots/job-search.png)
 
 ![Company](screenshots/company-reviews.png)
-![Profile](screenshots/job-application.png)
+![Profile](screenshots/profile.png)
 
-![Prisma Schema](screenshots/prisma-schema.png)
-![GraphQL Playground](screenshots/graphql-playground.png)
+![GraphQL Playground](screenshots/graphql.png)
 
 
 ## Installation
@@ -150,7 +149,7 @@ AWS_S3_REGION=your_aws_s3_region
 Swagger is used for API documentation. The Swagger UI can be accessed for detailed API information [here](https://glassdoor.koyeb.app/api).
 
 
-![Swagger UI](screenshots/swagger-ui.png)
+![Swagger UI](screenshots/swagger.png)
 
 
 ## deployment
