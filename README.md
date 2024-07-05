@@ -8,3 +8,129 @@ https://main.daq8kzkn55nlw.amplifyapp.com
 Api with nest js with prisma ,graphql:
 
 https://secondary-karoline-saransathish-bc84895f.koyeb.app
+
+# Job Search Platform
+
+Welcome to the Job Search Platform, a comprehensive job search solution inspired by Glassdoor. This platform allows users to search for jobs, view company details, and apply for positions, all within a user-friendly interface.
+
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Screenshots](#screenshots)
+5. [Installation](#installation)
+   - [Frontend](#frontend)
+   - [Backend](#backend)
+6. [Usage](#usage)
+7. [Environment Variables](#environment-variables)
+8. [Contributing](#contributing)
+9. [License](#license)
+
+## Overview
+
+This project is built using modern web development technologies to ensure a robust and scalable application. It consists of a React-based frontend and a NestJS-based backend, utilizing GraphQL for API communication and Prisma as the ORM. Firebase handles user authentication, while AWS S3 stores images, and AWS RDS PostgreSQL is used for the database.
+
+## Features
+
+- Job search functionality
+- Company reviews and ratings
+- User authentication with Firebase
+- Job application management
+- Image storage using AWS S3
+- API documentation with Swagger
+- Secure and scalable architecture
+
+## Technologies Used
+
+### Frontend
+
+- React
+- TypeScript
+- React Toastify for notifications
+
+### Backend
+
+- NestJS
+- TypeScript
+- GraphQL
+- Prisma ORM
+- AWS S3 for image storage
+- AWS RDS PostgreSQL for database
+- Firebase for authentication
+- Swagger for API documentation
+
+## Screenshots
+
+![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 2](screenshots/screenshot2.png)
+
+![Screenshot 3](screenshots/screenshot3.png)
+![Screenshot 4](screenshots/screenshot4.png)
+
+## Installation
+
+### Frontend
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/job-search-platform.git
+    cd job-search-platform/frontend
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the development server:
+    ```bash
+    npm start
+    ```
+
+### Backend
+
+1. Navigate to the backend directory:
+    ```bash
+    cd ../backend
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Set up environment variables (see [Environment Variables](#environment-variables)).
+
+4. Run Prisma migrations:
+    ```bash
+    npx prisma migrate deploy
+    ```
+
+5. Start the NestJS server:
+    ```bash
+    npm run start:dev
+    ```
+
+## Usage
+
+- Visit `http://localhost:3000` to access the frontend.
+- API documentation is available at `http://localhost:3000/api`.
+
+## Environment Variables
+
+Create a `.env` file in the backend directory and add the following variables:
+
+```env
+DATABASE_URL=postgresql://username:password@host:port/database
+FIREBASE_API_KEY=your_firebase_api_key
+FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+FIREBASE_PROJECT_ID=your_firebase_project_id
+FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+FIREBASE_APP_ID=your_firebase_app_id
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+AWS_S3_BUCKET_NAME=your_aws_s3_bucket_name
+AWS_S3_REGION=your_aws_s3_region
+
