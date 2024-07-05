@@ -1,16 +1,5 @@
 # Job_Search_Platform-GlassDoor
 
-FrontEnd with React Js:
-
-https://main.daq8kzkn55nlw.amplifyapp.com
-
-
-Api with nest js with prisma ,graphql:
-
-https://secondary-karoline-saransathish-bc84895f.koyeb.app
-
-# Job Search Platform
-
 Welcome to the Job Search Platform, a comprehensive job search solution inspired by Glassdoor. This platform allows users to search for jobs, view company details, and apply for positions, all within a user-friendly interface.
 
 ## Table of Contents
@@ -26,12 +15,8 @@ Welcome to the Job Search Platform, a comprehensive job search solution inspired
 7. [Environment Variables](#environment-variables)
    - [Frontend](#frontend)
    - [Backend](#backend)
-8. [Prisma Setup](#prisma-setup)
-9. [GraphQL Details](#graphql-details)
-10. [API Documentation](#api-documentation)
-11. [Deployment](#deployment)
-12. [Contributing](#contributing)
-13. [License](#license)
+8. [API Documentation](#api-documentation)
+9. [Deployment](#deployment)
 
 ## Overview
 
@@ -54,6 +39,8 @@ This project is built using modern web development technologies to ensure a robu
 - React
 - TypeScript
 - React Toastify for notifications
+- Firebase for authentication
+- AWS Aplify for hosting
 
 ### Backend
 
@@ -63,7 +50,6 @@ This project is built using modern web development technologies to ensure a robu
 - Prisma ORM
 - AWS S3 for image storage
 - AWS RDS PostgreSQL for database
-- Firebase for authentication
 - Swagger for API documentation
 
 ## Screenshots
@@ -71,13 +57,12 @@ This project is built using modern web development technologies to ensure a robu
 ![Homepage](screenshots/homepage.png)
 ![Job Search](screenshots/job-search.png)
 
-![Company Reviews](screenshots/company-reviews.png)
-![Job Application](screenshots/job-application.png)
+![Company](screenshots/company-reviews.png)
+![Profile](screenshots/job-application.png)
 
 ![Prisma Schema](screenshots/prisma-schema.png)
 ![GraphQL Playground](screenshots/graphql-playground.png)
 
-![Swagger UI](screenshots/swagger-ui.png)
 
 ## Installation
 
@@ -161,3 +146,16 @@ AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
 AWS_S3_BUCKET_NAME=your_aws_s3_bucket_name
 AWS_S3_REGION=your_aws_s3_region
 ```
+##api-documentation
+
+![Swagger UI](screenshots/swagger-ui.png)
+
+##deployment
+FrontEnd in AWS Aplify:
+
+https://main.daq8kzkn55nlw.amplifyapp.com
+
+
+Api in Koyeb:
+
+https://glassdoor.koyeb.app
