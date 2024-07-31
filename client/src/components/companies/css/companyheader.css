@@ -189,8 +189,10 @@
 
 @media (max-width: 900px) {
     .companyheader{
+        height: 100%;
+        padding-bottom: 50px;
         display:inline-block;
-        height: 750px;
+        /* height: 750px; */
     }
     
     .companyimg{
@@ -199,9 +201,49 @@
     
     .companytext{
         width: 100%;
-        margin-top: -80px;
+        margin-top: -50px;
         margin-left: 10px;
     }
 
 
+}
+@media(max-width:700px){
+    
+    .companyimg img{
+        height: 300px;
+        width: 380px;
+    }
+    .companytext{
+        width: 100%;
+        padding: 0px;
+        margin-top: -40px;
+
+    }
+    .texdiv{
+        width: 95%;
+    }
+    .btndiv{
+        width: 100%;
+        padding: 0px;
+    }
+    .btn3{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        
+    }
+    .modal ,.modal2{
+        width: 98%;
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    .databtns{
+        width:98%;
+        padding:0px;
+    }
+    .databtn{
+        padding: 0px;
+        width: 98%;
+    }
+    
 }

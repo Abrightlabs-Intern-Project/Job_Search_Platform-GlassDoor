@@ -52,6 +52,17 @@ export interface CommunityPost {
   imageUrl?: string;
   postedAt: string; 
   userId:string;
+  likesCount:number;
+  comment:CommunityComments[]
+}
+
+export interface CommunityComments{
+  commentId:string;
+  communityId: string;
+  userId:string;
+  commentContent:string;
+  postedAt:string;
+
 }
 
 // export const api = 'http://localhost:3000/'

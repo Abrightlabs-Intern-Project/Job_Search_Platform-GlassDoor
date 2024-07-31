@@ -24,12 +24,12 @@ export class CompanyController {
 
 
 
-    // @Get('createcompany')
-    // @ApiOkResponse({ type: String })
+    @Get('createcompany')
+    @ApiOkResponse({ type: String })
 
-    // async initadd(){
-    //     return this.companyservice.createcompany();
-    // }
+    async initadd(){
+        return this.companyservice.createcompany();
+    }
 
     @Get()
     @ApiOkResponse({ type: [Company] })
@@ -54,7 +54,7 @@ export class CompanyController {
     let iconUrl: string | null = null;
 
     if (file) {
-      const key = await this.s3Service.uploadFile(file);
+      const key = await this.s3Service.uploadCompanyIcon(file);
       iconUrl = this.s3Service.getFileupload(key);
     }
 
@@ -77,7 +77,7 @@ export class CompanyController {
     let iconUrl: string | null = null;
 
     if (file) {
-      const key = await this.s3Service.uploadFile(file);
+      const key = await this.s3Service.uploadCompanyIcon(file);
       iconUrl = this.s3Service.getFileupload(key);
     }
     const currentjob = {

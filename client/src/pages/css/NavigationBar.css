@@ -2,9 +2,9 @@
 .navbar1 {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-color: #ffffff;
-    padding: 10px 20px;
+    padding: 10px 0px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -38,7 +38,7 @@
 .navbar-center a:hover::after,
 .navbar-center a:focus::after {
     visibility: visible;
-    transform: scaleX(1);
+    /* transform: scaleX(1); */
 }
 
 .navbar-right .icon {
@@ -70,7 +70,6 @@
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    /* font-weight: bold; */
 }
 
 .popup-menu button {
@@ -84,4 +83,46 @@
 
 .popup-menu button:hover {
     background-color: #f0f0f0;
+}
+
+.activenavtab{
+    /* text-decoration: underline; */
+    color: rgb(10, 143, 68); 
+    border-bottom: 3px solid green;
+    padding-bottom: 5px;
+    bottom: -4px; /* Adjust the position of the underline */
+
+}
+.iconnav{
+    height: 25px;
+    width: 25px;
+}
+
+.navigationbutton{
+    display: none;
+    background-color: white;
+    border: none;
+    height: 30px;
+    width: 30px;
+}
+.extraone{
+    height:150px
+}
+
+@media(max-width:1100px){
+    .navigationbutton{
+        display:block
+    }
+    .bell{
+        display: none;
+    }
+    .seaicon{
+        display:none
+    }
+    .navbar-logo{
+        margin-left: -50px;
+    }
+    .navbar-right{
+        margin-right: 0px;
+    }
 }

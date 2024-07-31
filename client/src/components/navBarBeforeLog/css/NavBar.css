@@ -24,12 +24,7 @@
     transition: height 0.3s, width 0.3s;
 }
 
-/* .navbar-left-icon:hover {
-    height: 111px;
-    width: auto;
-} */
 
-/* Styling for the center part of the navbar */
 .navbar-center {
     margin-left: 80px;
     flex: 2;
@@ -55,7 +50,7 @@
     top: 43px;
     left: 0;
     width: 550px;
-    height: 220px;
+    /* height: 220; */
     background-color: white;
     border: 1px solid #bfbcbc;
     padding: 10px;
@@ -141,7 +136,7 @@
         justify-content: flex-end;
     }
     .signin-button {
-        margin-right: -20px;
+        margin-right: 0px;
         display: flex;
         align-items: center;
         background-color: black;
@@ -168,4 +163,8 @@
         margin-left: 10px;
     }
 
+}
+
+@media (max-width: 1100px) {
+    
 }

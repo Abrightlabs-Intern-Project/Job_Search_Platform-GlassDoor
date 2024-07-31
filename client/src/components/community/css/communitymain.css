@@ -209,4 +209,32 @@
     .communitycont{
         width:70%;
     }
+    
+}
+
+@media(max-width: 700px) {
+
+    .bowlcont{
+        display: none;
+    }
+    .maincommunity{
+        width:100%;
+        display: block;
+    }
+    .communitycont{
+        width:98%;
+        padding: 0px;
+        margin-left: 0.5%;
+        align-items: center;
+        justify-content: center;
+    }
+    .postcont{
+        display: none;
+    }
+    .search-bar{
+        width: 70%;
+    }
+    .noshareic {
+        display: none;
+    }
 }
